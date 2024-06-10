@@ -121,97 +121,6 @@
             <div id="data2" class="data">
                 <h2>Inspect & Sensitivity Test</h2>
                 <p>This is the data for the Inspect & Sensitivity Test feature.</p>
-            
-                <div class="container">
-                    <div class="header">
-                        <img src="img/Tonbologo.png" alt="Logo" class="logo">
-                        <div class="name-dropdown">
-                            <label for="name">NAME</label>
-                        </div>
-                    </div>
-                    <h1>Sensitivity Test & Inspection</h1>
-                    <br>
-                    <form>
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="date">Date</label>
-                                <input type="date" id="date" name="date" class="form-control">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="sensor-type">Type of Sensor</label>
-                                <select name="sensor-type" id="sensor-type" class="form-control">
-                                    <option value="">Select Sensor Type</option>
-                                    <option value="option1">Option 1</option>
-                                    <option value="option2">Option 2</option>
-                                    <option value="option3">Option 3</option>
-                                </select>
-                            </div>
-            
-                            <div class="form-group col-md-4">
-                                <label for="search-sl-no">Search SL.No</label>
-                                <div style="position: relative;">
-                                    <input type="text" id="search-sl-no" class="form-control" onkeyup="searchTable()">
-                                    <span style="position: absolute; right: 10px; top: 10px;">
-                                        <img src="/img/search.png" alt="Search" style="height: 20px; width: 20px;">
-                                    </span>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </form>
-                    <div class="count">
-                        <label>Count: </label>
-                        <span id="pass-count">P-0</span>
-                        <span id="fail-count">F-0</span>
-                    </div>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Select</th>
-                                <th>TI SL.No</th>
-                                <th>Status</th>
-                                <th>Sensitivity Check List</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td>TUV-9008555</td>
-                                <td>
-                                    <select class="status-dropdown" onchange="updateStatusCount(this)">
-                                        <option value="">Select</option>
-                                        <option value="pass" class="status-pass">Pass</option>
-                                        <option value="fail" class="status-fail">Fail</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <div class="checklist">
-                                        <label><input type="checkbox"> criteria 1</label>
-                                        <label><input type="checkbox"> criteria 2</label>
-                                        <label><input type="checkbox"> criteria 3</label>
-                                        <label><input type="checkbox"> criteria 4</label>
-                                        <label><input type="checkbox"> criteria 5</label>
-                                    </div>
-                                </td>
-                                
-                            </tr>
-                            <!-- More rows can go here -->
-                        </tbody>
-                    </table>
-                    <div class="footer">
-                        <div class="form-group">
-                            <label for="who-tested-sensor">Who tested Sensor</label>
-                            <select id="who-tested-sensor">
-                                <option value="">Select</option>
-                                <option value="option1">Option 1</option>
-                                <option value="option2">Option 2</option>
-                                <option value="option3">Option 3</option>
-                                <!-- Options go here -->
-                            </select>
-                        </div>
-                        <button class="save-button">SAVE</button>
-                    </div>
-                </div>
             </div>
 
             <div id="data3" class="data">
@@ -279,16 +188,6 @@ function addNewRow(input) {
     // Check if the current row is the last row
     var isLastRow = currentRow === table.rows[table.rows.length - 1];
 
-    // If the input value is empty and not the last row, delete the row
-    if (input.value.trim() === '' && !isLastRow) {
-        table.deleteRow(currentRow.rowIndex);
-        // Update the total count
-        updateTotalSerialCount();
-        // Update SL.no for the remaining rows
-        updateSerialNumbers();
-        return;
-    }
-
     // If the current row is the last row, add a new row
     if (input.value.trim() !== '' && isLastRow) {
         var newRow = table.insertRow(); // Insert a new row
@@ -344,24 +243,13 @@ function updateTotalSerialCount() {
     document.getElementById('total-serial-count').textContent = rowCount;
 }
 
-// Update SL.no for the remaining rows after deletion
-function updateSerialNumbers() {
-    var table = document.getElementById("my-table");
-    for (var i = 1; i < table.rows.length; i++) {
-        table.rows[i].cells[0].textContent = i;
-    }
-}
-
 // Add event listeners to all input fields for the initial row
 document.querySelectorAll('input[name="tonbo-sl-no"], input[name="sensor-sl-no"], input[name="proxy-board-sl-no"], input[name="power-board-sl-no"]').forEach(function(input) {
     input.addEventListener('input', function() {
         handleInput(this, input.name);
-        updateTotalSerialCount(); // Update the total count when any input changes
     });
 });
 
-// Update total count initially
-updateTotalSerialCount();
     </script>
     
     

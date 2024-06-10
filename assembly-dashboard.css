@@ -360,13 +360,11 @@ footer {
     transition: all 0.3s ease; /* Smooth transition */
 }
 
-<<<<<<< HEAD
 .save-button:hover {
     background-color: #52d2a1; /* Lighter green on hover */
     border-color: #52d2a1; /* Lighter green border on hover */
 }
 
-=======
 body {
     font-family: Arial, sans-serif;
 }
@@ -495,4 +493,3 @@ table td {
 .save-button:hover {
     background-color: #45a049;
 }
->>>>>>> 9aa5b03332b772b77ea4c5e1e958f6227bfba55e
