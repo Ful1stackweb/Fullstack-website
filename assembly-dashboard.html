@@ -144,7 +144,6 @@
                                     <option value="option1">Option 1</option>
                                     <option value="option2">Option 2</option>
                                     <option value="option3">Option 3</option>
-                                    <option value="option4">Option 3</option>
                                 </select>
                             </div>
             
@@ -214,55 +213,6 @@
                     </div>
                 </div>
             </div>
-            
-            <script>
-                function updateStatusCount(selectElement) {
-                    let passCountElement = document.getElementById("pass-count");
-                    let failCountElement = document.getElementById("fail-count");
-
-                    let passCount = parseInt(passCountElement.textContent.split('-')[1]);
-                    let failCount = parseInt(failCountElement.textContent.split('-')[1]);
-
-                    let previousStatus = selectElement.getAttribute("data-previous-status");
-                    let newStatus = selectElement.value;
-
-                    if (previousStatus === "pass") {
-                        passCount--;
-                    } else if (previousStatus === "fail") {
-                        failCount--;
-                    }
-
-                    if (newStatus === "pass") {
-                        passCount++;
-                    } else if (newStatus === "fail") {
-                        failCount++;
-                    }
-
-                    passCountElement.textContent = 'P-' + passCount;
-                    failCountElement.textContent = 'F-' + failCount;
-
-                    selectElement.setAttribute("data-previous-status", newStatus);
-                }
-                function searchTable() {
-                        let input = document.getElementById("search-sl-no").value.toUpperCase();
-                        let table = document.querySelector(".table tbody");
-                        let rows = table.getElementsByTagName("tr");
-
-                        for (let i = 0; i < rows.length; i++) {
-                            let td = rows[i].getElementsByTagName("td")[1];
-                            if (td) {
-                                let txtValue = td.textContent || td.innerText;
-                                if (txtValue.toUpperCase().indexOf(input) > -1) {
-                                    rows[i].style.display = "";
-                                } else {
-                                    rows[i].style.display = "none";
-                                }
-                            }
-                        }
-                    }
-            </script>
-
-        
 
             <div id="data3" class="data">
                 <h2>Sensor Replacement</h2>
