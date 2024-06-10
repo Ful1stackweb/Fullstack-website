@@ -121,7 +121,147 @@
             <div id="data2" class="data">
                 <h2>Inspect & Sensitivity Test</h2>
                 <p>This is the data for the Inspect & Sensitivity Test feature.</p>
+            
+                <div class="container">
+                    <div class="header">
+                        <img src="img/Tonbologo.png" alt="Logo" class="logo">
+                        <div class="name-dropdown">
+                            <label for="name">NAME</label>
+                        </div>
+                    </div>
+                    <h1>Sensitivity Test & Inspection</h1>
+                    <br>
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="date">Date</label>
+                                <input type="date" id="date" name="date" class="form-control">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="sensor-type">Type of Sensor</label>
+                                <select name="sensor-type" id="sensor-type" class="form-control">
+                                    <option value="">Select Sensor Type</option>
+                                    <option value="option1">Option 1</option>
+                                    <option value="option2">Option 2</option>
+                                    <option value="option3">Option 3</option>
+                                </select>
+                            </div>
+            
+                            <div class="form-group col-md-4">
+                                <label for="search-sl-no">Search SL.No</label>
+                                <div style="position: relative;">
+                                    <input type="text" id="search-sl-no" class="form-control" onkeyup="searchTable()">
+                                    <span style="position: absolute; right: 10px; top: 10px;">
+                                        <img src="/img/search.png" alt="Search" style="height: 20px; width: 20px;">
+                                    </span>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </form>
+                    <div class="count">
+                        <label>Count: </label>
+                        <span id="pass-count">P-0</span>
+                        <span id="fail-count">F-0</span>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Select</th>
+                                <th>TI SL.No</th>
+                                <th>Status</th>
+                                <th>Sensitivity Check List</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>TUV-9008555</td>
+                                <td>
+                                    <select class="status-dropdown" onchange="updateStatusCount(this)">
+                                        <option value="">Select</option>
+                                        <option value="pass" class="status-pass">Pass</option>
+                                        <option value="fail" class="status-fail">Fail</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <div class="checklist">
+                                        <label><input type="checkbox"> criteria 1</label>
+                                        <label><input type="checkbox"> criteria 2</label>
+                                        <label><input type="checkbox"> criteria 3</label>
+                                        <label><input type="checkbox"> criteria 4</label>
+                                        <label><input type="checkbox"> criteria 5</label>
+                                    </div>
+                                </td>
+                                
+                            </tr>
+                            <!-- More rows can go here -->
+                        </tbody>
+                    </table>
+                    <div class="footer">
+                        <div class="form-group">
+                            <label for="who-tested-sensor">Who tested Sensor</label>
+                            <select id="who-tested-sensor">
+                                <option value="">Select</option>
+                                <option value="option1">Option 1</option>
+                                <option value="option2">Option 2</option>
+                                <option value="option3">Option 3</option>
+                                <!-- Options go here -->
+                            </select>
+                        </div>
+                        <button class="save-button">SAVE</button>
+                    </div>
+                </div>
             </div>
+            
+            <script>
+                function updateStatusCount(selectElement) {
+                    let passCountElement = document.getElementById("pass-count");
+                    let failCountElement = document.getElementById("fail-count");
+
+                    let passCount = parseInt(passCountElement.textContent.split('-')[1]);
+                    let failCount = parseInt(failCountElement.textContent.split('-')[1]);
+
+                    let previousStatus = selectElement.getAttribute("data-previous-status");
+                    let newStatus = selectElement.value;
+
+                    if (previousStatus === "pass") {
+                        passCount--;
+                    } else if (previousStatus === "fail") {
+                        failCount--;
+                    }
+
+                    if (newStatus === "pass") {
+                        passCount++;
+                    } else if (newStatus === "fail") {
+                        failCount++;
+                    }
+
+                    passCountElement.textContent = 'P-' + passCount;
+                    failCountElement.textContent = 'F-' + failCount;
+
+                    selectElement.setAttribute("data-previous-status", newStatus);
+                }
+                function searchTable() {
+                        let input = document.getElementById("search-sl-no").value.toUpperCase();
+                        let table = document.querySelector(".table tbody");
+                        let rows = table.getElementsByTagName("tr");
+
+                        for (let i = 0; i < rows.length; i++) {
+                            let td = rows[i].getElementsByTagName("td")[1];
+                            if (td) {
+                                let txtValue = td.textContent || td.innerText;
+                                if (txtValue.toUpperCase().indexOf(input) > -1) {
+                                    rows[i].style.display = "";
+                                } else {
+                                    rows[i].style.display = "none";
+                                }
+                            }
+                        }
+                    }
+            </script>
+
+        
 
             <div id="data3" class="data">
                 <h2>Sensor Replacement</h2>
