@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assembly Dashboard</title>
+    <link rel="stylesheet" href="assembly-dashboard.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="WhiteBackground">
+    <header class="d-flex justify-content-between align-items-center p-1 bg-primary text-white">
+        <a href="#"><img src="img/Tonbologo.png" class="img-responsive Tonbologo" alt="Logo" id="logo" style="width: 150px; height: 50px;"></a>
+        <h1 class="flex-grow-1 text-center m-0">TI Sensor Data & Tracking</h1>
+    </header>
+
+    <div class="main-content">
+        <aside class="sidebar">
+            <div class="feature-list">
+                <h3>Features</h3>
+                <ul>
+                    <li><span>TI Detector</span>
+                        <ul class="sub-list">
+                            <li><a href="#" onclick="toggleData('data1')">New Assembled Detector</a></li>
+                            <li><a href="#" onclick="toggleData('data2')">Inspect & Sensitivity Test</a></li>
+                        </ul>
+                    </li>
+                    <li><span>Rejections</span>
+                        <ul class="sub-list">
+                            <li><a href="#" onclick="toggleData('data3')">Sensor Replacement</a></li>
+                            <li><a href="#" onclick="toggleData('data4')">Dust Sensor</a></li>
+                        </ul>
+                    </li>
+                    <li><span>Assembled History</span>
+                        <ul class="sub-list">
+                            <li><a href="#" onclick="toggleData('data5')">Date-wise Assembled</a></li>
+                            <li><a href="#" onclick="toggleData('data6')">Overall Assembled</a></li>
+                        </ul>
+                    </li>
+                    <li><span>ODDO Status</span>
+                        <ul class="sub-list">
+                            <li><a href="#" onclick="toggleData('data7')">Update</a></li>
+                        </ul>
+                    </li>
+                    <li><span>Detector History</span>
+                        <ul class="sub-list">
+                            <li><a href="#" onclick="toggleData('data8')">Tonbo Detector</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <div class="dashboard-content">
+            <div id="default-content">
+                <h2>Welcome to the Assembly Dashboard</h2>
+            </div>
+
+            <!-- Data elements will be displayed here based on the sublist item clicked -->
+            <div id="data1" class="data" style="display: none;">
+                <h2>New Assembled Detector</h2>
+                <div class="form-container">
+                    <div class="row-container">
+                        <div class="total-count">Total Serial Numbers: <span id="total-serial-count">0</span></div>
+                        <button class="save-button" onclick="saveData()">Save</button> <!-- Save button -->
+                    </div>
+                    <div class="table-container"></div>
+                    <!-- New Detector Assembly Form -->
+                    <form class="centered-form">
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="date">Date</label>
+                                <input type="date" id="date" name="date" class="form-control">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="sensor-type">Type of Sensor</label>
+                                <select name="sensor-type" id="sensor-type" class="form-control">
+                                    <option value="">Select Sensor Type</option>
+                                    <option value="option1">Option 1</option>
+                                    <option value="option2">Option 2</option>
+                                    <option value="option3">Option 3</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="assembled-by">Who Assembled Detectors</label>
+                                <select name="assembled-by" id="assembled-by" class="form-control">
+                                    <option value="">Select Assembler</option>
+                                    <option value="option1">Option 1</option>
+                                    <option value="option2">Option 2</option>
+                                    <option value="option3">Option 3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table id="my-table" class="table">
+                                <thead>
+                                    <tr>
+                                        <th>SL.no</th>
+                                        <th>Tonbo SL.no</th>
+                                        <th>Sensor SL. No</th>
+                                        <th>Proxy Board SL.no</th>
+                                        <th>Power Board SL.no</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td><input type="text" name="tonbo-sl-no" class="form-control small-input" oninput="addNewRow(this)"></td>
+                                        <td><input type="text" name="sensor-sl-no" class="form-control small-input"></td>
+                                        <td><input type="text" name="proxy-board-sl-no" class="form-control small-input"></td>
+                                        <td><input type="text" name="power-board-sl-no" class="form-control small-input"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            
+            
+
+            <div id="data2" class="data">
+                <h2>Inspect & Sensitivity Test</h2>
+                <p>This is the data for the Inspect & Sensitivity Test feature.</p>
+            </div>
+
+            <div id="data3" class="data">
+                <h2>Sensor Replacement</h2>
+                <p>This is the data for the Sensor Replacement feature.</p>
+            </div>
+
+            <div id="data4" class="data">
+                <h2>Dust Sensor</h2>
+                <p>This is the data for the Dust Sensor.</p>
+            </div>
+
+            <div id="data5" class="data">
+                <h2>Date-wise Assembled</h2>
+                <p>This is the data for the Date-wise Assembled feature.</p>
+            </div>
+
+            <div id="data6" class="data">
+                <h2>Overall Assembled</h2>
+                <p>This is the data for the Overall Assembled feature.</p>
+            </div>
+
+            <div id="data7" class="data">
+                <h2>Update ODDO</h2>
+                <p>This is the data for the ODDO status feature.</p>
+            </div>
+
+            <div id="data8" class="data">
+                <h2>Tonbo Detector</h2>
+                <p>This is the data for the Tonbo Detector feature.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer" class="bg-dark text-white text-center py-0 mt-0">
+        <p class="m-0">Tonbo Imaging &copy; 2024</p>
+    </footer>
+    
+    <script>
+        // Function to toggle data display
+function toggleData(id) {
+    var dataElement = document.getElementById(id);
+    var defaultContent = document.getElementById('default-content');
+
+    // Hide the default content
+    defaultContent.style.display = "none";
+
+    var allDataElements = document.querySelectorAll('.data');
+
+    // Hide all data elements first
+    allDataElements.forEach(function(element) {
+        element.style.display = "none";
+    });
+
+    // Show the data corresponding to the clicked sublist
+    dataElement.style.display = "block";
+}
+
+var currentSLno = 1; // Initialize SL.no counter
+
+function addNewRow(input) {
+    var currentRow = input.closest('tr'); // Get the current row
+    var table = document.getElementById("my-table");
+
+    // Check if the current row is the last row
+    var isLastRow = currentRow === table.rows[table.rows.length - 1];
+
+    // If the current row is the last row, add a new row
+    if (input.value.trim() !== '' && isLastRow) {
+        var newRow = table.insertRow(); // Insert a new row
+        currentSLno++; // Increment SL.no counter
+        newRow.innerHTML = `
+            <td>${currentSLno}</td>
+            <td><input type="text" name="tonbo-sl-no" class="form-control small-input" oninput="handleInput(this, 'tonbo-sl-no')"></td>
+            <td><input type="text" name="sensor-sl-no" class="form-control small-input" oninput="handleInput(this, 'sensor-sl-no')"></td>
+            <td><input type="text" name="proxy-board-sl-no" class="form-control small-input" oninput="handleInput(this, 'proxy-board-sl-no')"></td>
+            <td><input type="text" name="power-board-sl-no" class="form-control small-input" oninput="handleInput(this, 'power-board-sl-no')"></td>
+        `;
+
+        // Automatically focus on the first input field in the new row
+        newRow.querySelector('input[name="tonbo-sl-no"]').focus();
+
+        // Update the total count
+        updateTotalSerialCount();
+    }
+}
+
+function handleInput(input, columnName) {
+    var currentRow = input.closest('tr'); // Get the current row
+    var table = document.getElementById("my-table");
+
+    // Add a new row if this is the last row and the input value is not empty
+    addNewRow(input);
+
+    // Move to the next row in the same column if the current input is not empty
+    if (input.value.trim() !== '') {
+        var nextRow = currentRow.nextElementSibling;
+        if (nextRow) {
+            var nextInput = nextRow.querySelector(`input[name="${columnName}"]`);
+            if (nextInput) {
+                nextInput.focus();
+            }
+        }
+    }
+}
+
+function updateTotalSerialCount() {
+    var table = document.getElementById("my-table");
+    var rowCount = 0;
+
+    // Count the number of filled Tonbo SL.no cells
+    for (var i = 1, row; row = table.rows[i]; i++) {
+        var tonboCell = row.cells[1].querySelector('input[name="tonbo-sl-no"]');
+        if (tonboCell && tonboCell.value.trim() !== '') {
+            rowCount++;
+        }
+    }
+
+    // Update the total count display
+    document.getElementById('total-serial-count').textContent = rowCount;
+}
+
+// Add event listeners to all input fields for the initial row
+document.querySelectorAll('input[name="tonbo-sl-no"], input[name="sensor-sl-no"], input[name="proxy-board-sl-no"], input[name="power-board-sl-no"]').forEach(function(input) {
+    input.addEventListener('input', function() {
+        handleInput(this, input.name);
+    });
+});
+
+    </script>
+    
+    
+</body>
+</html>
