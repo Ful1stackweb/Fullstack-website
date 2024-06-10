@@ -19,7 +19,7 @@ header {
     z-index: 1000;
 }
 
-#logo {
+#logo {     
     width: 150px;
     height: 50px;
     margin-right: 80px;
@@ -142,21 +142,15 @@ h1 {
 }
 
 .dashboard-content {
-    margin-left: 270px;
-    /* Adjust sidebar width */
-    padding-bottom: 50px;
-    /* Adjust to prevent overlap with footer */
-    box-sizing: border-box;
-    /* Include padding in width calculation */
+    margin-left: 270px; /* Adjust sidebar width */
+    padding-bottom: 50px; /* Adjust to prevent overlap with footer */
+    box-sizing: border-box; /* Include padding in width calculation */
     overflow-y: auto;
     flex-grow: 1;
     margin-left: 270px;
-    position: fixed;
-    /* Fixed position */
-    top: 60px;
-    /* Distance from the top */
-    bottom: 50px;
-    /* Distance from the bottom (considering footer height) */
+    position: fixed; /* Fixed position */
+    top: 60px; /* Distance from the top */
+    bottom: 50px; /* Distance from the bottom (considering footer height) */
     left: 0;
     right: 0;
     z-index: 1;
@@ -175,80 +169,64 @@ h1 {
 #data1 h2 {
     font-size: 25px;
     font-weight: bold;
-    color: #5de4bc;
-    /* Choose your desired color */
-    margin-bottom: 10px;
-    /* Adjust margin bottom as needed */
+    color: #5de4bc; /* Choose your desired color */
+    margin-bottom: 10px; /* Adjust margin bottom as needed */
 }
 
 #data2 h2 {
     font-size: 25px;
     font-weight: bold;
-    color: #333;
-    /* Choose your desired color */
-    margin-bottom: 20px;
-    /* Adjust margin bottom as needed */
+    color: #333; /* Choose your desired color */
+    margin-bottom: 20px; /* Adjust margin bottom as needed */
 }
 
 #data3 h2 {
     font-size: 15px;
     font-weight: bold;
-    color: #333;
-    /* Choose your desired color */
-    margin-bottom: 10px;
-    /* Adjust margin bottom as needed */
+    color: #333; /* Choose your desired color */
+    margin-bottom: 10px; /* Adjust margin bottom as needed */
 }
 
 #data4 h2 {
     font-size: 15px;
     font-weight: bold;
-    color: #333;
-    /* Choose your desired color */
-    margin-bottom: 10px;
-    /* Adjust margin bottom as needed */
+    color: #333; /* Choose your desired color */
+    margin-bottom: 10px; /* Adjust margin bottom as needed */
 }
 
 #data5 h2 {
     font-size: 15px;
     font-weight: bold;
-    color: #333;
-    /* Choose your desired color */
-    margin-bottom: 10px;
-    /* Adjust margin bottom as needed */
+    color: #333; /* Choose your desired color */
+    margin-bottom: 10px; /* Adjust margin bottom as needed */
 }
 
 #data6 h2 {
     font-size: 15px;
     font-weight: bold;
-    color: #333;
-    /* Choose your desired color */
-    margin-bottom: 10px;
-    /* Adjust margin bottom as needed */
+    color: #333; /* Choose your desired color */
+    margin-bottom: 10px; /* Adjust margin bottom as needed */
 }
 
 #data7 h2 {
     font-size: 15px;
     font-weight: bold;
-    color: #333;
-    /* Choose your desired color */
-    margin-bottom: 10px;
-    /* Adjust margin bottom as needed */
+    color: #333; /* Choose your desired color */
+    margin-bottom: 10px; /* Adjust margin bottom as needed */
 }
 
 #data8 h2 {
     font-size: 15px;
     font-weight: bold;
-    color: #333;
-    /* Choose your desired color */
-    margin-bottom: 10px;
-    /* Adjust margin bottom as needed */
+    color: #333; /* Choose your desired color */
+    margin-bottom      : 10px; /* Adjust margin bottom as needed */
 }
 
 .centered-form {
     display: flex;
     flex-direction: column;
     width: 80%;
-    margin: 35px 0 auto;
+    margin: 35px auto; /* Center the form horizontally */
     background-color: #f4f7fc;
     padding: 20px;
     border-radius: 10px;
@@ -258,6 +236,7 @@ h1 {
 .form-row {
     display: flex;
     justify-content: space-between;
+    align-items: center; /* Align items vertically */
     margin-bottom: 20px;
 }
 
@@ -289,12 +268,9 @@ label {
 
 .table-container {
     width: 100%;
-    max-height: calc(100vh - 160px);
-    /* Adjust according to your needs */
-    overflow-y: auto;
-    /* Enable vertical scrolling */
-    position: relative;
-    /* Establish positioning context */
+    max-height: calc(100vh - 160px); /* Adjust according to your needs */
+    overflow-y: auto; /* Enable vertical scrolling */
+    position: relative; /* Establish positioning context */
 }
 
 .table {
@@ -351,35 +327,45 @@ footer {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-bottom: 20px;
-    /* Add margin-bottom for spacing */
+    margin-bottom: 20px; /* Add margin-bottom for spacing */
 }
 
 .total-count {
-    margin-right: 20px;
-    /* Adjust as needed */
-    padding: 5px;
+    margin-right: 20px; /* Adjust as needed */
+    padding: 8px 12px;
     font-size: 14px;
     background-color: #f3f3f3;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    border: 2px solid #5de4bc; /* Green border */
+    border-radius: 20px; /* Rounded border */
+    color: #333; /* Text color */
+    display: flex;
+    align-items: center;
+}
+
+.total-count span {
+    margin-right: 6px;
 }
 
 .save-button {
-    margin-right: 250px;
-    /* Adjust as needed */
-    padding: 5px 10px;
+    margin-right: 250px; /* Adjust as needed */
+    padding: 8px 20px;
     font-size: 14px;
     font-weight: bold;
-    background-color: rgba(0, 123, 255, 0.7);
-    /* Semi-transparent blue background */
+    background-color: #5de4bc; /* Green background */
     color: white;
-    border: none;
-    border-radius: 5px;
+    border: 2px solid #5de4bc; /* Green border */
+    border-radius: 20px; /* Rounded border */
     cursor: pointer;
-    white-space: nowrap;
-    /* Prevent button from wrapping */
+    white-space: nowrap; /* Prevent button from wrapping */
+    transition: all 0.3s ease; /* Smooth transition */
 }
+
+.save-button:hover {
+    background-color: #52d2a1; /* Lighter green on hover */
+    border-color: #52d2a1; /* Lighter green border on hover */
+}
+
+
 
 body {
     font-family: Arial, sans-serif;

@@ -119,9 +119,7 @@
             
 
             <div id="data2" class="data">
-                <h2>Inspect & Sensitivity Test</h2>
-                <p>This is the data for the Inspect & Sensitivity Test feature.</p>
-            
+                <h2>Inspect & Sensitivity Test</h2>            
                 <div class="container">
                     <div class="header">
                         <img src="img/Tonbologo.png" alt="Logo" class="logo">
@@ -329,6 +327,16 @@ function addNewRow(input) {
     // Check if the current row is the last row
     var isLastRow = currentRow === table.rows[table.rows.length - 1];
 
+    // If the input value is empty and not the last row, delete the row
+    if (input.value.trim() === '' && !isLastRow) {
+        table.deleteRow(currentRow.rowIndex);
+        // Update the total count
+        updateTotalSerialCount();
+        // Update SL.no for the remaining rows
+        updateSerialNumbers();
+        return;
+    }
+
     // If the current row is the last row, add a new row
     if (input.value.trim() !== '' && isLastRow) {
         var newRow = table.insertRow(); // Insert a new row
@@ -384,12 +392,24 @@ function updateTotalSerialCount() {
     document.getElementById('total-serial-count').textContent = rowCount;
 }
 
+// Update SL.no for the remaining rows after deletion
+function updateSerialNumbers() {
+    var table = document.getElementById("my-table");
+    for (var i = 1; i < table.rows.length; i++) {
+        table.rows[i].cells[0].textContent = i;
+    }
+}
+
 // Add event listeners to all input fields for the initial row
 document.querySelectorAll('input[name="tonbo-sl-no"], input[name="sensor-sl-no"], input[name="proxy-board-sl-no"], input[name="power-board-sl-no"]').forEach(function(input) {
     input.addEventListener('input', function() {
         handleInput(this, input.name);
+        updateTotalSerialCount(); // Update the total count when any input changes
     });
 });
+
+// Update total count initially
+updateTotalSerialCount();
 
     </script>
     
