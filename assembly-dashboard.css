@@ -226,16 +226,17 @@ h1 {
     display: flex;
     flex-direction: column;
     width: 80%;
-    margin: 35px 0 auto;
+    margin: 35px auto; /* Center the form horizontally */
     background-color: #f4f7fc;
     padding: 20px;
-    border-radius:10px;
+    border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .form-row {
     display: flex;
     justify-content: space-between;
+    align-items: center; /* Align items vertically */
     margin-bottom: 20px;
 }
 
@@ -331,22 +332,36 @@ footer {
 
 .total-count {
     margin-right: 20px; /* Adjust as needed */
-    padding: 5px;
+    padding: 8px 12px;
     font-size: 14px;
     background-color: #f3f3f3;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    border: 2px solid #5de4bc; /* Green border */
+    border-radius: 20px; /* Rounded border */
+    color: #333; /* Text color */
+    display: flex;
+    align-items: center;
+}
+
+.total-count span {
+    margin-right: 6px;
 }
 
 .save-button {
     margin-right: 250px; /* Adjust as needed */
-    padding: 5px 10px;
+    padding: 8px 20px;
     font-size: 14px;
     font-weight: bold;
-    background-color: rgba(0, 123, 255, 0.7); /* Semi-transparent blue background */
+    background-color: #5de4bc; /* Green background */
     color: white;
-    border: none;
-    border-radius: 5px;
+    border: 2px solid #5de4bc; /* Green border */
+    border-radius: 20px; /* Rounded border */
     cursor: pointer;
     white-space: nowrap; /* Prevent button from wrapping */
+    transition: all 0.3s ease; /* Smooth transition */
 }
+
+.save-button:hover {
+    background-color: #52d2a1; /* Lighter green on hover */
+    border-color: #52d2a1; /* Lighter green border on hover */
+}
+
