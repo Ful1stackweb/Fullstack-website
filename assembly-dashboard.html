@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,11 @@
     <link rel="stylesheet" href="assembly-dashboard.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+
 <body class="WhiteBackground">
     <header class="d-flex justify-content-between align-items-center p-1 bg-primary text-white">
-        <a href="#"><img src="img/Tonbologo.png" class="img-responsive Tonbologo" alt="Logo" id="logo" style="width: 150px; height: 50px;"></a>
+        <a href="#"><img src="img/Tonbologo.png" class="img-responsive Tonbologo" alt="Logo" id="logo"
+                style="width: 150px; height: 50px;"></a>
         <h1 class="flex-grow-1 text-center m-0">TI Sensor Data & Tracking</h1>
     </header>
 
@@ -103,10 +106,14 @@
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td><input type="text" name="tonbo-sl-no" class="form-control small-input" oninput="addNewRow(this)"></td>
-                                        <td><input type="text" name="sensor-sl-no" class="form-control small-input"></td>
-                                        <td><input type="text" name="proxy-board-sl-no" class="form-control small-input"></td>
-                                        <td><input type="text" name="power-board-sl-no" class="form-control small-input"></td>
+                                        <td><input type="text" name="tonbo-sl-no" class="form-control small-input"
+                                                oninput="addNewRow(this)"></td>
+                                        <td><input type="text" name="sensor-sl-no" class="form-control small-input">
+                                        </td>
+                                        <td><input type="text" name="proxy-board-sl-no"
+                                                class="form-control small-input"></td>
+                                        <td><input type="text" name="power-board-sl-no"
+                                                class="form-control small-input"></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -114,12 +121,12 @@
                     </form>
                 </div>
             </div>
-            
-            
-            
+
+
+
 
             <div id="data2" class="data">
-                <h2>Inspect & Sensitivity Test</h2>            
+                <h2>Inspect & Sensitivity Test</h2>
                 <div class="container">
                     <div class="header">
                         <img src="img/Tonbologo.png" alt="Logo" class="logo">
@@ -142,10 +149,9 @@
                                     <option value="option1">Option 1</option>
                                     <option value="option2">Option 2</option>
                                     <option value="option3">Option 3</option>
-                                    <option value="option4">Option 3</option>
                                 </select>
                             </div>
-            
+
                             <div class="form-group col-md-4">
                                 <label for="search-sl-no">Search SL.No</label>
                                 <div style="position: relative;">
@@ -154,7 +160,7 @@
                                         <img src="/img/search.png" alt="Search" style="height: 20px; width: 20px;">
                                     </span>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </form>
@@ -192,7 +198,7 @@
                                         <label><input type="checkbox"> criteria 5</label>
                                     </div>
                                 </td>
-                                
+
                             </tr>
                             <!-- More rows can go here -->
                         </tbody>
@@ -212,7 +218,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <script>
                 function updateStatusCount(selectElement) {
                     let passCountElement = document.getElementById("pass-count");
@@ -242,30 +248,107 @@
                     selectElement.setAttribute("data-previous-status", newStatus);
                 }
                 function searchTable() {
-                        let input = document.getElementById("search-sl-no").value.toUpperCase();
-                        let table = document.querySelector(".table tbody");
-                        let rows = table.getElementsByTagName("tr");
+                    let input = document.getElementById("search-sl-no").value.toUpperCase();
+                    let table = document.querySelector(".table tbody");
+                    let rows = table.getElementsByTagName("tr");
 
-                        for (let i = 0; i < rows.length; i++) {
-                            let td = rows[i].getElementsByTagName("td")[1];
-                            if (td) {
-                                let txtValue = td.textContent || td.innerText;
-                                if (txtValue.toUpperCase().indexOf(input) > -1) {
-                                    rows[i].style.display = "";
-                                } else {
-                                    rows[i].style.display = "none";
-                                }
+                    for (let i = 0; i < rows.length; i++) {
+                        let td = rows[i].getElementsByTagName("td")[1];
+                        if (td) {
+                            let txtValue = td.textContent || td.innerText;
+                            if (txtValue.toUpperCase().indexOf(input) > -1) {
+                                rows[i].style.display = "";
+                            } else {
+                                rows[i].style.display = "none";
                             }
                         }
                     }
+                }
             </script>
 
-        
+
 
             <div id="data3" class="data">
-                <h2>Sensor Replacement</h2>
-                <p>This is the data for the Sensor Replacement feature.</p>
+                <h2>Board and Sensor Replacement</h2>
+                <div class="search-container">
+                    <label for="search-sl-no">Search SL.No :</label>
+                    <input type="text" id="search-sl-no" class="form-control">
+                    <button class="search-btn"><img src="search-icon.png" alt="Search"></button>
+                </div>
+                <div class="status-container">
+                    <span class="status-failed">Failed</span>
+                    <span class="status-issue">Issue will be displayed</span>
+                </div>
+                <div class="counts-container">
+                    <div class="count-box">
+                        <div class="count-item">
+                            <p class="count-title">Sensor Count</p>
+                            <p class="count-value" id="sensor-count">0</p>
+                        </div>
+                        <div class="count-divider"></div> <!-- Vertical line -->
+                        <div class="count-item">
+                            <p class="count-title">Board Count</p>
+                            <p class="count-value" id="board-count">0</p>
+                        </div>
+                    </div>
+                </div>
+                <table id="sensor-table">
+                    <thead>
+                        <tr>
+                            <th>PARTS No</th>
+                            <th>DATE</th>
+                            <th>DATE</th>
+                            <th>DATE</th>
+                            <th>ADD</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" name="part-no" class="form-control small-input"></td>
+                            <td><input type="text" name="date-1" class="form-control small-input"></td>
+                            <td><input type="text" name="date-2" class="form-control small-input"></td>
+                            <td><input type="text" name="date-3" class="form-control small-input"></td>
+                            <td><button class="edit-btn">Edit</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="add-row-btn">Add Row</button>
             </div>
+
+
+            <script>
+                function toggleData3() {
+                    var data3 = document.getElementById('data3');
+                    if (data3.style.display === 'none') {
+                        data3.style.display = 'block';
+                    } else {
+                        data3.style.display = 'none';
+                    }
+                }
+
+                document.addEventListener('DOMContentLoaded', function () {
+                    var currentSLno = 1; // Initialize SL.no counter
+
+                    function addNewRow() {
+                        var table = document.getElementById("sensor-table").getElementsByTagName('tbody')[0];
+                        var newRow = table.insertRow(); // Insert a new row
+                        currentSLno++; // Increment SL.no counter
+                        newRow.innerHTML = `
+                            <td><input type="text" name="part-no" class="form-control small-input"></td>
+                            <td><input type="text" name="date-1" class="form-control small-input"></td>
+                            <td><input type="text" name="date-2" class="form-control small-input"></td>
+                            <td><input type="text" name="date-3" class="form-control small-input"></td>
+                            <td><button class="edit-btn">Edit</button></td>
+                        `;
+                    }
+
+                    // Add event listener for add row button
+                    document.querySelector('.add-row-btn').addEventListener('click', addNewRow);
+
+                    // Hide data3 initially
+                    document.getElementById('data3').style.display = 'none';
+                });
+            </script>
 
             <div id="data4" class="data">
                 <h2>Dust Sensor</h2>
@@ -297,51 +380,51 @@
     <footer id="footer" class="bg-dark text-white text-center py-0 mt-0">
         <p class="m-0">Tonbo Imaging &copy; 2024</p>
     </footer>
-    
+
     <script>
-        // Function to toggle data display
-function toggleData(id) {
-    var dataElement = document.getElementById(id);
-    var defaultContent = document.getElementById('default-content');
+        function toggleData(id) {
+            var dataElement = document.getElementById(id);
+            var defaultContent = document.getElementById('default-content');
 
-    // Hide the default content
-    defaultContent.style.display = "none";
+            // Hide the default content
+            defaultContent.style.display = "none";
 
-    var allDataElements = document.querySelectorAll('.data');
+            var allDataElements = document.querySelectorAll('.data');
 
-    // Hide all data elements first
-    allDataElements.forEach(function(element) {
-        element.style.display = "none";
-    });
+            // Hide all data elements first
+            allDataElements.forEach(function (element) {
+                element.style.display = "none";
+            });
 
-    // Show the data corresponding to the clicked sublist
-    dataElement.style.display = "block";
-}
+            // Show the data corresponding to the clicked sublist
+            dataElement.style.display = "block";
+        }
 
-var currentSLno = 1; // Initialize SL.no counter
+        var currentSLno = 1; // Initialize SL.no counter
 
-function addNewRow(input) {
-    var currentRow = input.closest('tr'); // Get the current row
-    var table = document.getElementById("my-table");
+        function addNewRow(input) {
+            var currentRow = input.closest('tr'); // Get the current row
+            var table = document.getElementById("my-table");
 
-    // Check if the current row is the last row
-    var isLastRow = currentRow === table.rows[table.rows.length - 1];
+            // Check if the current row is the last row
+            var isLastRow = currentRow === table.rows[table.rows.length - 1];
 
-    // If the input value is empty and not the last row, delete the row
-    if (input.value.trim() === '' && !isLastRow) {
-        table.deleteRow(currentRow.rowIndex);
-        // Update the total count
-        updateTotalSerialCount();
-        // Update SL.no for the remaining rows
-        updateSerialNumbers();
-        return;
-    }
+            // If the input value is empty and not the last row, delete the row
+            // Ensure that the first row is never removed
+            if (input.value.trim() === '' && !isLastRow && currentRow.rowIndex !== 1) {
+                table.deleteRow(currentRow.rowIndex);
+                // Update the total count
+                updateTotalSerialCount();
+                // Update SL.no for the remaining rows
+                updateSerialNumbers();
+                return;
+            }
 
-    // If the current row is the last row, add a new row
-    if (input.value.trim() !== '' && isLastRow) {
-        var newRow = table.insertRow(); // Insert a new row
-        currentSLno++; // Increment SL.no counter
-        newRow.innerHTML = `
+            // If the current row is the last row, add a new row
+            if (input.value.trim() !== '' && isLastRow) {
+                var newRow = table.insertRow(); // Insert a new row
+                currentSLno++; // Increment SL.no counter
+                newRow.innerHTML = `
             <td>${currentSLno}</td>
             <td><input type="text" name="tonbo-sl-no" class="form-control small-input" oninput="handleInput(this, 'tonbo-sl-no')"></td>
             <td><input type="text" name="sensor-sl-no" class="form-control small-input" oninput="handleInput(this, 'sensor-sl-no')"></td>
@@ -349,70 +432,71 @@ function addNewRow(input) {
             <td><input type="text" name="power-board-sl-no" class="form-control small-input" oninput="handleInput(this, 'power-board-sl-no')"></td>
         `;
 
-        // Automatically focus on the first input field in the new row
-        newRow.querySelector('input[name="tonbo-sl-no"]').focus();
+                // Automatically focus on the first input field in the new row
+                newRow.querySelector('input[name="tonbo-sl-no"]').focus();
 
-        // Update the total count
-        updateTotalSerialCount();
-    }
-}
-
-function handleInput(input, columnName) {
-    var currentRow = input.closest('tr'); // Get the current row
-    var table = document.getElementById("my-table");
-
-    // Add a new row if this is the last row and the input value is not empty
-    addNewRow(input);
-
-    // Move to the next row in the same column if the current input is not empty
-    if (input.value.trim() !== '') {
-        var nextRow = currentRow.nextElementSibling;
-        if (nextRow) {
-            var nextInput = nextRow.querySelector(`input[name="${columnName}"]`);
-            if (nextInput) {
-                nextInput.focus();
+                // Update the total count
+                updateTotalSerialCount();
             }
         }
-    }
-}
 
-function updateTotalSerialCount() {
-    var table = document.getElementById("my-table");
-    var rowCount = 0;
+        function handleInput(input, columnName) {
+            var currentRow = input.closest('tr'); // Get the current row
+            var table = document.getElementById("my-table");
 
-    // Count the number of filled Tonbo SL.no cells
-    for (var i = 1, row; row = table.rows[i]; i++) {
-        var tonboCell = row.cells[1].querySelector('input[name="tonbo-sl-no"]');
-        if (tonboCell && tonboCell.value.trim() !== '') {
-            rowCount++;
+            // Add a new row if this is the last row and the input value is not empty
+            addNewRow(input);
+
+            // Move to the next row in the same column if the current input is not empty
+            if (input.value.trim() !== '') {
+                var nextRow = currentRow.nextElementSibling;
+                if (nextRow) {
+                    var nextInput = nextRow.querySelector(`input[name="${columnName}"]`);
+                    if (nextInput) {
+                        nextInput.focus();
+                    }
+                }
+            }
         }
-    }
 
-    // Update the total count display
-    document.getElementById('total-serial-count').textContent = rowCount;
-}
+        function updateTotalSerialCount() {
+            var table = document.getElementById("my-table");
+            var rowCount = 0;
 
-// Update SL.no for the remaining rows after deletion
-function updateSerialNumbers() {
-    var table = document.getElementById("my-table");
-    for (var i = 1; i < table.rows.length; i++) {
-        table.rows[i].cells[0].textContent = i;
-    }
-}
+            // Count the number of filled Tonbo SL.no cells
+            for (var i = 1, row; row = table.rows[i]; i++) {
+                var tonboCell = row.cells[1].querySelector('input[name="tonbo-sl-no"]');
+                if (tonboCell && tonboCell.value.trim() !== '') {
+                    rowCount++;
+                }
+            }
 
-// Add event listeners to all input fields for the initial row
-document.querySelectorAll('input[name="tonbo-sl-no"], input[name="sensor-sl-no"], input[name="proxy-board-sl-no"], input[name="power-board-sl-no"]').forEach(function(input) {
-    input.addEventListener('input', function() {
-        handleInput(this, input.name);
-        updateTotalSerialCount(); // Update the total count when any input changes
-    });
-});
+            // Update the total count display
+            document.getElementById('total-serial-count').textContent = rowCount;
+        }
 
-// Update total count initially
-updateTotalSerialCount();
+        // Update SL.no for the remaining rows after deletion
+        function updateSerialNumbers() {
+            var table = document.getElementById("my-table");
+            for (var i = 1; i < table.rows.length; i++) {
+                table.rows[i].cells[0].textContent = i;
+            }
+        }
+
+        // Add event listeners to all input fields for the initial row
+        document.querySelectorAll('input[name="tonbo-sl-no"], input[name="sensor-sl-no"], input[name="proxy-board-sl-no"], input[name="power-board-sl-no"]').forEach(function (input) {
+            input.addEventListener('input', function () {
+                handleInput(this, input.name);
+                updateTotalSerialCount(); // Update the total count when any input changes
+            });
+        });
+
+        // Update total count initially
+        updateTotalSerialCount();
 
     </script>
-    
-    
+
+
 </body>
+
 </html>
