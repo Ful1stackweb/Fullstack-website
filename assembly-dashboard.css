@@ -887,7 +887,7 @@ td {
    font-size: 30px;
 }
 
-.save-button {
+.save-buttons {
     background-color: #4CAF50;
     color: white;
     padding: 8px 20px;
@@ -897,6 +897,6 @@ td {
     margin-right: 850px;
 }
 
-.save-button:hover {
+.save-buttons:hover {
     background-color: #45a049;
 }
