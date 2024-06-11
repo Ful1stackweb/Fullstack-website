@@ -129,19 +129,27 @@
                 <h2>Inspect & Sensitivity Test</h2>
                 <div class="container">
                     <div class="header">
-                        <img src="img/Tonbologo.png" alt="Logo" class="logo">
-                        <div class="name-dropdown">
-                            <label for="name">NAME</label>
-                        </div>
+                        
                     </div>
-                    <h1>Sensitivity Test & Inspection</h1>
-                    <br>
+                    
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="date">Date</label>
                                 <input type="date" id="date" name="date" class="form-control">
                             </div>
+                            <div class="form-group">
+                                <label for="who-tested-sensor">Who tested Sensor</label>
+                                <select id="who-tested-sensor">
+                                    <option value="">Select</option>
+                                    <option value="option1">Option 1</option>
+                                    <option value="option2">Option 2</option>
+                                    <option value="option3">Option 3</option>
+                                    <!-- Options go here -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="sensor-type">Type of Sensor</label>
                                 <select name="sensor-type" id="sensor-type" class="form-control">
@@ -151,7 +159,9 @@
                                     <option value="option3">Option 3</option>
                                 </select>
                             </div>
-
+                            
+                        </div>
+                        <div class="form-row centered">
                             <div class="form-group col-md-4">
                                 <label for="search-sl-no">Search SL.No</label>
                                 <div style="position: relative;">
@@ -160,15 +170,21 @@
                                         <img src="/img/search.png" alt="Search" style="height: 20px; width: 20px;">
                                     </span>
                                 </div>
-
                             </div>
                         </div>
                     </form>
-                    <div class="count">
-                        <label>Count: </label>
-                        <span id="pass-count">P-0</span>
-                        <span id="fail-count">F-0</span>
-                    </div>
+                    <div class="counts-container">
+                        <div class="count-box">
+                            <div class="count-item">
+                                <p class="count-title">Pass Count</p>
+                                <p class="count-value" id="pass-count">P-0</p>
+                            </div>
+                            <div class="count-divider"></div>
+                            <div class="count-item">
+                                <p class="count-title">Fail Count</p>
+                                <p class="count-value" id="fail-count">F-0</p>
+                            </div>
+                        </div>
                     <table class="table">
                         <thead>
                             <tr>
@@ -204,17 +220,8 @@
                         </tbody>
                     </table>
                     <div class="footer">
-                        <div class="form-group">
-                            <label for="who-tested-sensor">Who tested Sensor</label>
-                            <select id="who-tested-sensor">
-                                <option value="">Select</option>
-                                <option value="option1">Option 1</option>
-                                <option value="option2">Option 2</option>
-                                <option value="option3">Option 3</option>
-                                <!-- Options go here -->
-                            </select>
-                        </div>
-                        <button class="save-button">SAVE</button>
+                     
+                        <button class="save-button" id="positioning">SAVE</button>
                     </div>
                 </div>
             </div>
