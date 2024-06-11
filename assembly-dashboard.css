@@ -782,3 +782,121 @@ table th {
     border: none;
     cursor: pointer;
 }
+
+
+/*-----DATA 4-------------------------------DATA 4-------------------------*/
+
+.sensor-count {
+    display: block;
+    text-align: right;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.search-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#search-slno {
+    padding: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+.status-dropdown option {
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.status-dropdown option.passed {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-dropdown option.failed {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.status-dropdown {
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.status-dropdown option[selected="selected"].passed {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-dropdown option[selected="selected"].failed {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.status-dropdown {
+    width: 100%;
+}
+
+.status-dropdown option.passed {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-dropdown option.failed {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#cleared-dust {
+    flex: 1;
+    padding: 7px;
+    margin-right: 20px;
+    width: 300px;
+}
+.dust-textsize{
+   font-size: 30px;
+}
+
+.save-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 850px;
+}
+
+.save-button:hover {
+    background-color: #45a049;
+}
