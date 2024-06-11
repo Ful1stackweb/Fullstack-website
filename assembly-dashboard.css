@@ -557,6 +557,54 @@ table td {
 .save-button:hover {
     background-color: #45a049;
 }
+.new-counts-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.new-count-box {
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 5px;
+    width: 250px;
+    /* Adjusted width for both counts */
+    box-sizing: border-box;
+    margin: 0 auto;
+    /* Center the box */
+    display: flex;
+    justify-content: space-between;
+    /* Space between the two counts */
+    align-items: center;
+    /* Center the items vertically */
+}
+
+.new-count-item {
+    text-align: center;
+}
+
+.new-count-item span {
+    display: block;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.new-count-title {
+    margin-bottom: 5px;
+}
+
+.new-count-value {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.new-count-divider {
+    border-right: 1px solid #ccc;
+    /* Vertical line between counts */
+    height: 50px;
+    /* Adjust the height as needed */
+    margin: 0 10px;
+    /* Adjust the space between the line and counts */
+}
 
 
 body {
