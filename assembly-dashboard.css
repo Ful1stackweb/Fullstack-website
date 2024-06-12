@@ -548,10 +548,107 @@ table td {
     border-radius: 4px;
     cursor: pointer;
 }
-
+#positioning{
+    display: block;
+        /* Make the button a block element */
+        margin-left: 0px;
+        
+}
 .save-button:hover {
     background-color: #45a049;
 }
+.new-counts-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.new-count-box {
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 5px;
+    width: 250px;
+    /* Adjusted width for both counts */
+    box-sizing: border-box;
+    margin: 0 auto;
+    /* Center the box */
+    display: flex;
+    justify-content: space-between;
+    /* Space between the two counts */
+    align-items: center;
+    /* Center the items vertically */
+}
+
+.new-count-item {
+    text-align: center;
+}
+
+.new-count-item span {
+    display: block;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.new-count-title {
+    margin-bottom: 5px;
+}
+
+.new-count-value {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.new-count-divider {
+    border-right: 1px solid #ccc;
+    /* Vertical line between counts */
+    height: 50px;
+    /* Adjust the height as needed */
+    margin: 0 10px;
+    /* Adjust the space between the line and counts */
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-right: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group .form-control {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.centered {
+    justify-content: center;
+}
+
+.centered .form-group {
+    width: 50%;
+}
+
+img {
+    cursor: pointer;
+}
+
+
+
+
+
 
 
 /*-----DATA 3-------------------------------DATA 3-------------------------*/
@@ -718,4 +815,122 @@ table th {
     color: white;
     border: none;
     cursor: pointer;
+}
+
+
+/*-----DATA 4-------------------------------DATA 4-------------------------*/
+
+.sensor-count {
+    display: block;
+    text-align: right;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.search-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#search-slno {
+    padding: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+.status-dropdown option {
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.status-dropdown option.passed {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-dropdown option.failed {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.status-dropdown {
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.status-dropdown option[selected="selected"].passed {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-dropdown option[selected="selected"].failed {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.status-dropdown {
+    width: 100%;
+}
+
+.status-dropdown option.passed {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-dropdown option.failed {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#cleared-dust {
+    flex: 1;
+    padding: 7px;
+    margin-right: 20px;
+    width: 300px;
+}
+.dust-textsize{
+   font-size: 30px;
+}
+
+.save-buttons {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 850px;
+}
+
+.save-buttons:hover {
+    background-color: #45a049;
 }
