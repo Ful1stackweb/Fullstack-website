@@ -645,11 +645,26 @@ img {
     cursor: pointer;
 }
 
+#who-tested-sensor {
+    width: 400px;
+    /* Adjust this value to your desired width */
+}
+#search-bar {
+    text-align: center;
+    margin-bottom: -85px;
+}
 
-
-
-
-
+#search-style{
+    padding: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+    margin-right: 10px;
+    position: relative;
+    text-align: center;
+}
+.counts-containers{
+    margin-right: -500px;
+}
 
 /*-----DATA 3-------------------------------DATA 3-------------------------*/
 
@@ -691,9 +706,11 @@ img {
     border-radius: 5px; /* Border radius */
     padding: 5px; /* Adjust padding */
     width: 35%; /* Adjust width */
+    margin-right: -100px;
     margin: 0 auto; /* Center horizontally */
-    margin-bottom: 50px; /* Adjust margin bottom */
-    text-align: center; /* Center text inside */
+    margin-bottom: 150px; /* Adjust margin bottom */
+    text-align: center /* Center text inside */
+   
 }
 
 .status-item {
@@ -734,7 +751,9 @@ img {
     display: flex;
     justify-content: space-between; /* Space between the counts */
     align-items: center; /* Center the items vertically */
-    margin-right: 20px; /* Adjust margin right */
+    margin-right: 550px; /* Adjust margin right */
+    
+
 }
 
 .count-box:hover {
