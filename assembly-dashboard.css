@@ -861,6 +861,7 @@ td {
     padding: 10px;
     text-align: left;
 }
+
 .status-dropdown option {
     padding: 2px 5px;
     border-radius: 3px;
@@ -917,8 +918,9 @@ td {
     margin-right: 20px;
     width: 300px;
 }
-.dust-textsize{
-   font-size: 30px;
+
+.dust-textsize {
+    font-size: 30px;
 }
 
 .save-buttons {
