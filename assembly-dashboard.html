@@ -617,8 +617,111 @@
         </script>
 
         <div id="data7" class="data">
-            <h2>Update ODDO</h2>
-            <p>This is the data for the ODDO status feature.</p>
+            <h2></h2>
+            <h1 class="oddo-textsize">ODDO Status Update</h1>
+            
+           
+                <div class="container">
+                   
+                    <div class="form-group col-md-4">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" name="date" class="form-control">
+                    </div>
+                    <div class="search-section">
+                        <label for="search-slno">Search SL.No :</label>
+                        <input type="text" id="search-slno" />
+                        <button class="search-button">&#128269;</button>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>SL.No</th>
+                                <th>TI SL.No</th>
+                                <th>Procedure Status</th>
+                            
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>TUV-9001234</td>
+                                <td>
+                                    <select class="status-dropdown" id="len">
+                                        <option value="passed" class="passed">PASSED</option>
+                                        <option value="failed" class="failed">FAILED</option>
+                                    </select>
+                                </td>
+                               
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>TUV-9001234</td>
+                                <td>
+                                    <select class="status-dropdown" id="len">
+                                        <option value="passed" class="passed">PASSED</option>
+                                        <option value="failed" class="failed">FAILED</option>
+                                    </select>
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>TUV-9001234</td>
+                                <td>
+                                    <select class="status-dropdown" id="len">
+                                        <option value="passed" class="passed">PASSED</option>
+                                        <option value="failed" class="failed">FAILED</option>
+                                    </select>
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>TUV-9001234</td>
+                                <td>
+                                    <select class="status-dropdown"id="len">
+                                        <option value="passed" class="passed">PASSED</option>
+                                        <option value="failed" class="failed">FAILED</option>
+                                    </select>
+                                </td>
+                               
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+            
+                        <button class="save-buttonss">SAVE</button>
+                    </div>
+            
+                </div>
+            
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const statusDropdowns = document.querySelectorAll(".status-dropdown");
+
+                    statusDropdowns.forEach((dropdown) => {
+                        dropdown.addEventListener("change", function () {
+                            applyStyles(dropdown);
+                        });
+                        applyStyles(dropdown); // Apply styles on page load based on initial value
+                    });
+
+                    function applyStyles(dropdown) {
+                        const selectedOption = dropdown.options[dropdown.selectedIndex];
+                        if (selectedOption.classList.contains("passed")) {
+                            dropdown.style.backgroundColor = "#d4edda";
+                            dropdown.style.color = "#155724";
+                        } else if (selectedOption.classList.contains("failed")) {
+                            dropdown.style.backgroundColor = "#f8d7da";
+                            dropdown.style.color = "#721c24";
+                        } else {
+                            dropdown.style.backgroundColor = "";
+                            dropdown.style.color = "";
+                        }
+                    }
+                });
+            </script>
+
         </div>
 
         <div id="data8" class="data">
