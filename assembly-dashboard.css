@@ -560,6 +560,7 @@ table td {
 .new-counts-container {
     text-align: center;
     margin-bottom: 20px;
+    
 }
 
 .new-count-box {
@@ -568,6 +569,7 @@ table td {
     border-radius: 5px;
     width: 250px;
     /* Adjusted width for both counts */
+    margin-left: 100px;
     box-sizing: border-box;
     margin: 0 auto;
     /* Center the box */
@@ -576,6 +578,7 @@ table td {
     /* Space between the two counts */
     align-items: center;
     /* Center the items vertically */
+
 }
 
 .new-count-item {
@@ -663,7 +666,7 @@ img {
     text-align: center;
 }
 .counts-containers{
-    margin-right: -500px;
+    margin-right: -900px;
 }
 
 /*-----DATA 3-------------------------------DATA 3-------------------------*/
