@@ -505,14 +505,116 @@
 
 
         <div id="data5" class="data">
+            
             <h2>Date-wise Assembled</h2>
             <p>This is the data for the Date-wise Assembled feature.</p>
         </div>
 
         <div id="data6" class="data">
-            <h2>Overall Assembled</h2>
-            <p>This is the data for the Overall Assembled feature.</p>
+            <h1 class="overall-textsize">Overall Assembled</h1>
+            
+           
+            <div class="container">
+                <h4>Overall Assembled Detector Details</h4>
+                <div class="new-detectors">
+                    <span>New detectors</span>
+                    <button class="detector-btn">ATTO</button>
+                    <button class="detector-btn">ATHENA</button>
+                </div>
+                <div class="details">
+                    <div class="left">
+                        <h3>New Detector Assembled</h3>
+                        <table>
+                            <tr>
+                                <th>Date</th>
+                                <th>Type</th>
+                                <th>Count</th>
+                            </tr>
+                            <tr>
+                                <td>2023-06-01</td>
+                                <td>ATTO</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>2023-06-02</td>
+                                <td>ATHENA</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td>2023-06-03</td>
+                                <td>ATTO</td>
+                                <td>2</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="right">
+                        <h3>Date wise count Assembled</h3>
+                        <div class="filters">
+                            <label>Start: <input type="date" id="start-date"></label>
+                            <label>End: <input type="date" id="end-date"></label>
+                            <label>Type:
+                                <select id="type">
+                                    <option value="all">All</option>
+                                    <option value="ATTO">ATTO</option>
+                                    <option value="ATHENA">ATHENA</option>
+                                </select>
+                            </label>
+                        </div>
+                        <table>
+                            <tr>
+                                <th>Count</th>
+                            </tr>
+                            <tr>
+                                <td id="count">0</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <button class="done-btn">DONE</button>
+            </div>
         </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                    const startDateInput = document.getElementById('start-date');
+                    const endDateInput = document.getElementById('end-date');
+                    const typeSelect = document.getElementById('type');
+                    const countDisplay = document.getElementById('count');
+
+                    function updateCount() {
+                        const startDate = new Date(startDateInput.value);
+                        const endDate = new Date(endDateInput.value);
+                        const type = typeSelect.value;
+
+                        const rows = document.querySelectorAll('.left table tr');
+                        let totalCount = 0;
+
+                        rows.forEach((row, index) => {
+                            if (index === 0) return; // Skip header row
+
+                            const date = new Date(row.cells[0].textContent);
+                            const rowType = row.cells[1].textContent;
+                            const count = parseInt(row.cells[2].textContent);
+
+                            if ((!isNaN(startDate) && date < startDate) || (!isNaN(endDate) && date > endDate)) {
+                                return;
+                            }
+
+                            if (type !== 'all' && rowType !== type) {
+                                return;
+                            }
+
+                            totalCount += count;
+                        });
+
+                        countDisplay.textContent = totalCount;
+                    }
+
+                    startDateInput.addEventListener('change', updateCount);
+                    endDateInput.addEventListener('change', updateCount);
+                    typeSelect.addEventListener('change', updateCount);
+                });
+
+        </script>
 
         <div id="data7" class="data">
             <h2>Update ODDO</h2>

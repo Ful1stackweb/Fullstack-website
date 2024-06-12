@@ -955,3 +955,102 @@ td {
 .save-buttons:hover {
     background-color: #45a049;
 }
+
+
+/*-----DATA 6-------------------------------DATA 6-------------------------*/
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+.new-detectors {
+    display: inline-block;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #f0f0f0;
+    margin-bottom: 20px;
+}
+
+.detector-btn {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.detector-btn:nth-child(2) {
+    background-color: green;
+}
+
+.detector-btn:nth-child(3) {
+    background-color: blue;
+}
+
+.details {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.left,
+.right {
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+h3 {
+    color: red;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+.filters {
+    margin-bottom: 20px;
+}
+
+.filters label {
+    display: inline-block;
+    margin: 5px;
+}
+
+#type {
+    width: 100px;
+    /* Adjust the width as needed */
+}
+.overall-textsize {
+    font-size: 30px;
+}
+.done-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    background-color: lightgreen;
+    color: black;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
