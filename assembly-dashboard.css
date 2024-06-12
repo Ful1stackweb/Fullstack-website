@@ -557,7 +557,8 @@ table td {
 /*-----DATA 3-------------------------------DATA 3-------------------------*/
 
 /* Add your CSS styles for data3 here */
-.search-container {
+.search-container {   
+    margin-top: 40px;
     text-align: center;
     margin-bottom: 20px;
 }
@@ -579,15 +580,46 @@ table td {
 }
 
 /* Status Container */
+.status-count-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .status-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;
+    border: 2px solid #5de4bc; /* Border color */
+    border-radius: 5px; /* Border radius */
+    padding: 5px; /* Adjust padding */
+    width: 35%; /* Adjust width */
+    margin: 0 auto; /* Center horizontally */
+    margin-bottom: 50px; /* Adjust margin bottom */
+    text-align: center; /* Center text inside */
+}
+
+.status-item {
+    flex: 1;
     text-align: center;
-    margin-bottom: 20px;
+}
+
+.status-divider {
+    width: 2px;
+    background-color: #3ea4d3; /* Divider color */
+    height: 50px; /* Adjust height as needed */
+}
+
+.status-title {
+    display: block;
+    font-weight: bold;
+    font-size: 16px;
+    color: #333; /* Text color */
 }
 
 .status-failed {
     color: red;
     font-weight: bold;
-    margin-right: 20px;
 }
 
 .status-issue {
@@ -595,21 +627,22 @@ table td {
 }
 
 /* Counts Container */
-.counts-container {
-    text-align: center;
-    margin-bottom: 20px;
-}
 
 .count-box {
     background-color: #f2f2f2;
     padding: 10px;
     border-radius: 5px;
-    width: 250px; /* Adjusted width for both counts */
+    width: fit-content; /* Adjusted width */
     box-sizing: border-box;
-    margin: 0 auto; /* Center the box */
     display: flex;
-    justify-content: space-between; /* Space between the two counts */
+    justify-content: space-between; /* Space between the counts */
     align-items: center; /* Center the items vertically */
+    margin-right: 20px; /* Adjust margin right */
+}
+
+.count-box:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
 }
 
 .count-box .count-item {
@@ -618,12 +651,14 @@ table td {
 
 .count-box .count-item span {
     display: block;
-    font-weight: bold;
+    font-weight: bold; /* Set text to bold */
     font-size: 16px;
+    color: #333; /* Text color */
 }
 
 .count-box .count-item .count-title {
     margin-bottom: 5px;
+    color: #666; /* Text color */
 }
 
 .count-box .count-item .count-value {
@@ -636,7 +671,6 @@ table td {
     height: 50px; /* Adjust the height as needed */
     margin: 0 10px; /* Adjust the space between the line and counts */
 }
-
 /* Table Styles */
 table {
     width: 60%; /* Reduce the width of the table */

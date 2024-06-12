@@ -271,110 +271,117 @@
             <div id="data3" class="data">
                 <h2>Board and Sensor Replacement</h2>
                 <div class="search-container">
-                    <label for="search-sl-no">Search SL.No :</label>
+                    <label for="search-sl-no">Serial.No </label>
                     <input type="text" id="search-sl-no" class="form-control">
                     <button class="search-btn"><img src="search-icon.png" alt="Search"></button>
                 </div>
-                <div class="status-container">
-                    <span class="status-failed">Failed</span>
-                    <span class="status-issue">Issue will be displayed</span>
-                </div>
-                <div class="counts-container">
-                    <div class="count-box">
-                        <div class="count-item">
-                            <p class="count-title">Sensor Count</p>
-                            <p class="count-value" id="sensor-count">0</p>
+                <div class="status-count-container">
+                    <div class="status-container">
+                        <div class="status-item">
+                            <span class="status-title">Failed</span>
                         </div>
-                        <div class="count-divider"></div> <!-- Vertical line -->
-                        <div class="count-item">
-                            <p class="count-title">Board Count</p>
-                            <p class="count-value" id="board-count">0</p>
+                        <div class="status-divider"></div> <!-- Divider -->
+                        <div class="status-item">
+                            <span class="status-title">Issue will be displayed</span>
+                        </div>
+                    </div>
+                    <div class="counts-container">
+                        <div class="count-box">
+                            <div class="count-item">
+                                <p class="count-title">Sensor Count</p>
+                                <p class="count-value" id="sensor-count">0</p>
+                            </div>
+                            <div class="count-divider"></div> <!-- Vertical line -->
+                            <div class="count-item">
+                                <p class="count-title">Board Count</p>
+                                <p class="count-value" id="board-count">0</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <table id="sensor-table">
-                    <thead>
-                        <tr>
-                            <th>PARTS No</th>
-                            <th>DATE</th>
-                            <th>DATE</th>
-                            <th>DATE</th>
-                            <th>ADD</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="text" name="part-no" class="form-control small-input"></td>
-                            <td><input type="text" name="date-1" class="form-control small-input"></td>
-                            <td><input type="text" name="date-2" class="form-control small-input"></td>
-                            <td><input type="text" name="date-3" class="form-control small-input"></td>
-                            <td><button class="edit-btn">Edit</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button class="add-row-btn">Add Row</button>
-            </div>
+            <table id="sensor-table">
+                <thead>
+                    <tr>
+                        <th>PARTS No</th>
+                        <th>DATE</th>
+                        <th>DATE</th>
+                        <th>DATE</th>
+                        <th>ADD</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" name="part-no" class="form-control small-input"></td>
+                        <td><input type="text" name="date-1" class="form-control small-input"></td>
+                        <td><input type="text" name="date-2" class="form-control small-input"></td>
+                        <td><input type="text" name="date-3" class="form-control small-input"></td>
+                        <td><button class="edit-btn">Edit</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="add-row-btn">Add Row</button>
+        </div>
 
 
-            <script>
-                function toggleData3() {
-                    var data3 = document.getElementById('data3');
-                    if (data3.style.display === 'none') {
-                        data3.style.display = 'block';
-                    } else {
-                        data3.style.display = 'none';
-                    }
+        <script>
+            function toggleData3() {
+                var data3 = document.getElementById('data3');
+                if (data3.style.display === 'none') {
+                    data3.style.display = 'block';
+                } else {
+                    data3.style.display = 'none';
                 }
+            }
 
-                document.addEventListener('DOMContentLoaded', function () {
-                    var currentSLno = 1; // Initialize SL.no counter
+            document.addEventListener('DOMContentLoaded', function () {
+                var currentSLno = 1; // Initialize SL.no counter
 
-                    function addNewRow() {
-                        var table = document.getElementById("sensor-table").getElementsByTagName('tbody')[0];
-                        var newRow = table.insertRow(); // Insert a new row
-                        currentSLno++; // Increment SL.no counter
-                        newRow.innerHTML = `
+                function addNewRow() {
+                    var table = document.getElementById("sensor-table").getElementsByTagName('tbody')[0];
+                    var newRow = table.insertRow(); // Insert a new row
+                    currentSLno++; // Increment SL.no counter
+                    newRow.innerHTML = `
                             <td><input type="text" name="part-no" class="form-control small-input"></td>
                             <td><input type="text" name="date-1" class="form-control small-input"></td>
                             <td><input type="text" name="date-2" class="form-control small-input"></td>
                             <td><input type="text" name="date-3" class="form-control small-input"></td>
                             <td><button class="edit-btn">Edit</button></td>
                         `;
-                    }
+                }
 
-                    // Add event listener for add row button
-                    document.querySelector('.add-row-btn').addEventListener('click', addNewRow);
+                // Add event listener for add row button
+                document.querySelector('.add-row-btn').addEventListener('click', addNewRow);
 
-                    // Hide data3 initially
-                    document.getElementById('data3').style.display = 'none';
-                });
-            </script>
+                // Hide data3 initially
+                document.getElementById('data3').style.display = 'none';
+            });
+        </script>
 
-            <div id="data4" class="data">
-                <h2>Dust Sensor</h2>
-                <p>This is the data for the Dust Sensor.</p>
-            </div>
-
-            <div id="data5" class="data">
-                <h2>Date-wise Assembled</h2>
-                <p>This is the data for the Date-wise Assembled feature.</p>
-            </div>
-
-            <div id="data6" class="data">
-                <h2>Overall Assembled</h2>
-                <p>This is the data for the Overall Assembled feature.</p>
-            </div>
-
-            <div id="data7" class="data">
-                <h2>Update ODDO</h2>
-                <p>This is the data for the ODDO status feature.</p>
-            </div>
-
-            <div id="data8" class="data">
-                <h2>Tonbo Detector</h2>
-                <p>This is the data for the Tonbo Detector feature.</p>
-            </div>
+        <div id="data4" class="data">
+            <h2>Dust Sensor</h2>
+            <p>This is the data for the Dust Sensor.</p>
         </div>
+
+        <div id="data5" class="data">
+            <h2>Date-wise Assembled</h2>
+            <p>This is the data for the Date-wise Assembled feature.</p>
+        </div>
+
+        <div id="data6" class="data">
+            <h2>Overall Assembled</h2>
+            <p>This is the data for the Overall Assembled feature.</p>
+        </div>
+
+        <div id="data7" class="data">
+            <h2>Update ODDO</h2>
+            <p>This is the data for the ODDO status feature.</p>
+        </div>
+
+        <div id="data8" class="data">
+            <h2>Tonbo Detector</h2>
+            <p>This is the data for the Tonbo Detector feature.</p>
+        </div>
+    </div>
     </div>
 
     <footer id="footer" class="bg-dark text-white text-center py-0 mt-0">
