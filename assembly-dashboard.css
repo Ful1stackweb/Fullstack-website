@@ -667,12 +667,92 @@ img {
 }
 
 /*-----DATA 3-------------------------------DATA 3-------------------------*/
+/* Table Styles */
 
-/* Add your CSS styles for data3 here */
-.search-container {   
-    margin-top: 40px;
+#sensor-table {
+    width: 50%;
+    /* Fix the width of the table to 50% */
+    table-layout: fixed;
+    /* Ensure fixed table layout */
+    border-collapse: collapse;
+    margin: 0 auto;
+    /* Center the table */
+    margin-bottom: 50px;
+}
+
+#sensor-table th,
+#sensor-table td {
+    border: 1px solid #ddd;
+    padding: 3px;
+    /* Adjust padding */
     text-align: center;
+    word-wrap: break-word;
+    /* Ensure content wraps within cells */
+}
+
+#sensor-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.form-control.small-input {
+    width: calc(100% - 6px);
+    /* Adjust width of input */
+    box-sizing: border-box;
+    padding: 2px;
+    /* Adjust padding */
+}
+
+.small-input {
+    width: 100px;
+}
+
+.column-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Center the content */
+}
+
+.add-column-btn,
+.delete-column-btn {
+    background-color: #007bff;
+    /* Bootstrap primary color */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.add-column-btn:hover,
+.delete-column-btn:hover {
+    background-color: #0056b3;
+    /* Darker shade of primary color */
+}
+
+.delete-column-btn {
+    margin-left: 10px;
+}
+
+/* Additional Styles */
+
+.search-status-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
     margin-bottom: 20px;
+    gap: 20px;
+    /* Space between elements */
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    /* Space between elements */
 }
 
 .search-container label {
@@ -680,8 +760,7 @@ img {
 }
 
 .search-container .form-control {
-    display: inline-block;
-    width: 200px;
+    width: 150px;
     padding: 5px;
 }
 
@@ -692,73 +771,83 @@ img {
 }
 
 /* Status Container */
-.status-count-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
 .status-container {
     display: flex;
-    justify-content: center; /* Center horizontally */
+    justify-content: center;
+    /* Center horizontally */
     align-items: center;
-    border: 2px solid #5de4bc; /* Border color */
-    border-radius: 5px; /* Border radius */
-    padding: 5px; /* Adjust padding */
-    width: 35%; /* Adjust width */
-    margin-right: -100px;
-    margin: 0 auto; /* Center horizontally */
-    margin-bottom: 150px; /* Adjust margin bottom */
-    text-align: center /* Center text inside */
-   
+    border: 2px solid #000000;
+    /* Border color */
+    border-radius: 5px;
+    /* Border radius */
+    padding: 5px;
+    /* Adjust padding */
+    width: 50%;
+    /* Adjust width to your preference */
+    text-align: center;
+    /* Center text inside */
+    gap: 10px;
+    /* Space between status boxes */
+    margin-bottom: 20px;
+    /* Add margin at the bottom for spacing */
 }
 
-.status-item {
+.status-box {
     flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
     text-align: center;
 }
 
-.status-divider {
-    width: 2px;
-    background-color: #3ea4d3; /* Divider color */
-    height: 50px; /* Adjust height as needed */
-}
-
-.status-title {
-    display: block;
-    font-weight: bold;
-    font-size: 16px;
-    color: #333; /* Text color */
-}
-
-.status-failed {
+.status-box.failed {
+    background-color: #ffcccc;
+    /* Light red background */
     color: red;
-    font-weight: bold;
+    /* Red text */
 }
 
-.status-issue {
-    color: olive;
+.status-box.issue {
+    background-color: #ccffcc;
+    /* Light green background */
+    color: green;
+    /* Green text */
 }
 
 /* Counts Container */
+
+.counts-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
 
 .count-box {
     background-color: #f2f2f2;
     padding: 10px;
     border-radius: 5px;
-    width: fit-content; /* Adjusted width */
+    width: fit-content;
+    /* Adjusted width */
     box-sizing: border-box;
     display: flex;
-    justify-content: space-between; /* Space between the counts */
-    align-items: center; /* Center the items vertically */
-    margin-right: 550px; /* Adjust margin right */
-    
-
+    justify-content: space-between;
+    /* Space between the counts */
+    align-items: center;
+    /* Center the items vertically */
+    margin: 0 auto;
+    /* Center horizontally */
 }
 
 .count-box:hover {
-    transform: scale(1.05); /* Scale effect on hover */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+    transform: scale(1.05);
+    /* Scale effect on hover */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* Add shadow on hover */
 }
 
 .count-box .count-item {
@@ -767,14 +856,17 @@ img {
 
 .count-box .count-item span {
     display: block;
-    font-weight: bold; /* Set text to bold */
+    font-weight: bold;
+    /* Set text to bold */
     font-size: 16px;
-    color: #333; /* Text color */
+    color: #333;
+    /* Text color */
 }
 
 .count-box .count-item .count-title {
     margin-bottom: 5px;
-    color: #666; /* Text color */
+    color: #666;
+    /* Text color */
 }
 
 .count-box .count-item .count-value {
@@ -783,58 +875,14 @@ img {
 }
 
 .count-box .count-divider {
-    border-right: 1px solid #ccc; /* Vertical line between counts */
-    height: 50px; /* Adjust the height as needed */
-    margin: 0 10px; /* Adjust the space between the line and counts */
-}
-/* Table Styles */
-table {
-    width: 60%; /* Reduce the width of the table */
-    border-collapse: collapse;
-    margin: 0 auto; /* Center the table */
-    margin-bottom: 20px;
+    border-right: 1px solid #ccc;
+    /* Vertical line between counts */
+    height: 50px;
+    /* Adjust the height as needed */
+    margin: 0 10px;
+    /* Adjust the space between the line and counts */
 }
 
-table th,
-table td {
-    border: 1px solid #ddd;
-    padding: 6px; /* Reduce padding */
-    text-align: center;
-}
-
-table th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-}
-
-.form-control {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 3px; /* Reduce padding */
-}
-
-.small-input {
-    width: 100%;
-    padding: 3px; /* Reduce padding */
-}
-
-.edit-btn {
-    background-color: olive;
-    color: white;
-    border: none;
-    padding: 3px 6px; /* Reduce padding */
-    cursor: pointer;
-}
-
-.add-row-btn {
-    display: block;
-    margin: 0 auto;
-    padding: 8px 16px; /* Adjust padding */
-    background-color: purple;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
 
 
 /*-----DATA 4-------------------------------DATA 4-------------------------*/

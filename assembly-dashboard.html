@@ -277,94 +277,123 @@
 
 
 
-            <div id="data3" class="data">
-                <h2>Board and Sensor Replacement</h2>
-                <div class="search-container">
-                    <label for="search-sl-no">Serial.No </label>
-                    <input type="text" id="search-sl-no" class="form-control">
-                    <button class="search-btn"><img src="search-icon.png" alt="Search"></button>
-                </div>
-                <div class="status-count-container">
-                    <div class="status-container">
-                        <div class="status-item">
-                            <span class="status-title">Failed</span>
-                        </div>
-                        <div class="status-divider"></div> <!-- Divider -->
-                        <div class="status-item">
-                            <span class="status-title">Issue will be displayed</span>
-                        </div>
-                    </div>
-                    <div class="counts-container">
-                        <div class="count-box">
-                            <div class="count-item">
-                                <p class="count-title">Sensor Count</p>
-                                <p class="count-value" id="sensor-count">0</p>
-                            </div>
-                            <div class="count-divider"></div> <!-- Vertical line -->
-                            <div class="count-item">
-                                <p class="count-title">Board Count</p>
-                                <p class="count-value" id="board-count">0</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <table id="sensor-table">
-                <thead>
-                    <tr>
-                        <th>PARTS No</th>
-                        <th>DATE</th>
-                        <th>DATE</th>
-                        <th>DATE</th>
-                        <th>ADD</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="text" name="part-no" class="form-control small-input"></td>
-                        <td><input type="text" name="date-1" class="form-control small-input"></td>
-                        <td><input type="text" name="date-2" class="form-control small-input"></td>
-                        <td><input type="text" name="date-3" class="form-control small-input"></td>
-                        <td><button class="edit-btn">Edit</button></td>
-                    </tr>
-                </tbody>
-            </table>
-            <button class="add-row-btn">Add Row</button>
+<div id="data3" class="data">
+    <h2>Board and Sensor Replacement</h2>
+    <div class="search-status-container">
+        <div class="search-container">
+            <label for="search-sl-no">Serial.No</label>
+            <input type="text" id="search-sl-no" class="form-control">
+            <button class="search-btn"><img src="search-icon.png" alt="Search"></button>
         </div>
+        <div class="status-container">
+            <div class="status-box failed">
+                <span class="status-title">Failed</span>
+            </div>
+            <div class="status-box issue">
+                <span class="status-title">Issue will be displayed</span>
+            </div>
+        </div>
+    </div>
+    <div class="counts-container">
+        <div class="count-box">
+            <div class="count-item">
+                <p class="count-title">Sensor Count</p>
+                <p class="count-value" id="sensor-count">0</p>
+            </div>
+            <div class="count-divider"></div> <!-- Vertical line -->
+            <div class="count-item">
+                <p class="count-title">Board Count</p>
+                <p class="count-value" id="board-count">0</p>
+            </div>
+        </div>
+    </div>
+    <table id="sensor-table" class="table">
+        <thead>
+            <tr>
+                <th>PARTS Name</th>
+                <th>PARTS No</th>
+                <th><input type="date" name="date-1" class="form-control small-input date-input"></th>
+                <th class="column-controls">
+                    <button class="add-column-btn">Add</button>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Sensor</td>
+                <td><input type="text" name="part-no" class="form-control small-input"></td>
+                <td><input type="text" name="date-1" class="form-control small-input"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Proxy Board</td>
+                <td><input type="text" name="part-no" class="form-control small-input"></td>
+                <td><input type="text" name="date-1" class="form-control small-input"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Power Board</td>
+                <td><input type="text" name="part-no" class="form-control small-input"></td>
+                <td><input type="text" name="date-1" class="form-control small-input"></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 
-        <script>
-            function toggleData3() {
-                var data3 = document.getElementById('data3');
-                if (data3.style.display === 'none') {
-                    data3.style.display = 'block';
-                } else {
-                    data3.style.display = 'none';
-                }
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        function addNewColumn() {
+            // Get the table and header row
+            var table = document.getElementById("sensor-table");
+            var headerRow = table.getElementsByTagName('thead')[0].rows[0];
+
+            // Create new header cell with a date input
+            var newHeaderCell = document.createElement('th');
+            var newDateInput = document.createElement('input');
+            newDateInput.type = 'date';
+            newDateInput.className = 'form-control small-input date-input';
+            newHeaderCell.appendChild(newDateInput);
+
+            // Insert the delete button
+            var deleteButton = document.createElement('button');
+            deleteButton.className = 'delete-column-btn';
+            deleteButton.innerHTML = 'Delete';
+            deleteButton.onclick = function () {
+                deleteColumn(newHeaderCell.cellIndex);
+            };
+            newHeaderCell.appendChild(deleteButton);
+
+            // Append the new header cell before the 'Add' button column
+            headerRow.insertBefore(newHeaderCell, headerRow.cells[headerRow.cells.length - 1]);
+
+            // Append new cell in each row in tbody
+            var rows = table.getElementsByTagName('tbody')[0].rows;
+            for (var i = 0; i < rows.length; i++) {
+                var newCell = rows[i].insertCell(rows[i].cells.length - 1);
+                var newTextInput = document.createElement('input');
+                newTextInput.type = 'text';
+                newTextInput.className = 'form-control small-input';
+                newCell.appendChild(newTextInput);
             }
+        }
 
-            document.addEventListener('DOMContentLoaded', function () {
-                var currentSLno = 1; // Initialize SL.no counter
+        function deleteColumn(index) {
+            var table = document.getElementById("sensor-table");
+            var rows = table.rows;
 
-                function addNewRow() {
-                    var table = document.getElementById("sensor-table").getElementsByTagName('tbody')[0];
-                    var newRow = table.insertRow(); // Insert a new row
-                    currentSLno++; // Increment SL.no counter
-                    newRow.innerHTML = `
-                            <td><input type="text" name="part-no" class="form-control small-input"></td>
-                            <td><input type="text" name="date-1" class="form-control small-input"></td>
-                            <td><input type="text" name="date-2" class="form-control small-input"></td>
-                            <td><input type="text" name="date-3" class="form-control small-input"></td>
-                            <td><button class="edit-btn">Edit</button></td>
-                        `;
-                }
+            // Remove the column from each row
+            for (var i = 0; i < rows.length; i++) {
+                rows[i].deleteCell(index);
+            }
+        }
 
-                // Add event listener for add row button
-                document.querySelector('.add-row-btn').addEventListener('click', addNewRow);
+        // Add event listener for add column button
+        document.querySelector('.add-column-btn').addEventListener('click', addNewColumn);
+    });
+</script>
 
-                // Hide data3 initially
-                document.getElementById('data3').style.display = 'none';
-            });
-        </script>
 
            <div id="data4" class="data">
             <h1 class="dust-textsize">Dust Sensor Module</h1>
