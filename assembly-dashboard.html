@@ -129,9 +129,9 @@
                 <h2>Inspect & Sensitivity Test</h2>
                 <div class="container">
                     <div class="header">
-                        
+
                     </div>
-                    
+
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-4">
@@ -159,7 +159,7 @@
                                     <option value="option3">Option 3</option>
                                 </select>
                             </div>
-                            
+
                         </div>
                         <div class="form-row centered" id="search-bar">
                             <div class="form-group col-md-4">
@@ -222,7 +222,7 @@
                         </tbody>
                     </table>
                     <div class="footer">
-                     
+
                         <button class="save-button" id="positioning">SAVE</button>
                     </div>
                 </div>
@@ -277,333 +277,333 @@
 
 
 
-<div id="data3" class="data">
-    <h2>Board and Sensor Replacement</h2>
-    <div class="search-status-container">
-        <div class="search-container">
-            <label for="search-sl-no">Serial.No</label>
-            <input type="text" id="search-sl-no" class="form-control">
-            <button class="search-btn"><img src="search-icon.png" alt="Search"></button>
-        </div>
-        <div class="status-container">
-            <div class="status-box failed">
-                <span class="status-title">Failed</span>
-            </div>
-            <div class="status-box issue">
-                <span class="status-title">Issue will be displayed</span>
-            </div>
-        </div>
-    </div>
-    <div class="counts-container">
-        <div class="count-box">
-            <div class="count-item">
-                <p class="count-title">Sensor Count</p>
-                <p class="count-value" id="sensor-count">0</p>
-            </div>
-            <div class="count-divider"></div> <!-- Vertical line -->
-            <div class="count-item">
-                <p class="count-title">Board Count</p>
-                <p class="count-value" id="board-count">0</p>
-            </div>
-        </div>
-    </div>
-    <table id="sensor-table" class="table">
-        <thead>
-            <tr>
-                <th>PARTS Name</th>
-                <th>PARTS No</th>
-                <th><input type="date" name="date-1" class="form-control small-input date-input"></th>
-                <th class="column-controls">
-                    <button class="add-column-btn">Add</button>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Sensor</td>
-                <td><input type="text" name="part-no" class="form-control small-input"></td>
-                <td><input type="text" name="date-1" class="form-control small-input"></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Proxy Board</td>
-                <td><input type="text" name="part-no" class="form-control small-input"></td>
-                <td><input type="text" name="date-1" class="form-control small-input"></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Power Board</td>
-                <td><input type="text" name="part-no" class="form-control small-input"></td>
-                <td><input type="text" name="date-1" class="form-control small-input"></td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        function addNewColumn() {
-            // Get the table and header row
-            var table = document.getElementById("sensor-table");
-            var headerRow = table.getElementsByTagName('thead')[0].rows[0];
-
-            // Create new header cell with a date input
-            var newHeaderCell = document.createElement('th');
-            var newDateInput = document.createElement('input');
-            newDateInput.type = 'date';
-            newDateInput.className = 'form-control small-input date-input';
-            newHeaderCell.appendChild(newDateInput);
-
-            // Insert the delete button
-            var deleteButton = document.createElement('button');
-            deleteButton.className = 'delete-column-btn';
-            deleteButton.innerHTML = 'Delete';
-            deleteButton.onclick = function () {
-                deleteColumn(newHeaderCell.cellIndex);
-            };
-            newHeaderCell.appendChild(deleteButton);
-
-            // Append the new header cell before the 'Add' button column
-            headerRow.insertBefore(newHeaderCell, headerRow.cells[headerRow.cells.length - 1]);
-
-            // Append new cell in each row in tbody
-            var rows = table.getElementsByTagName('tbody')[0].rows;
-            for (var i = 0; i < rows.length; i++) {
-                var newCell = rows[i].insertCell(rows[i].cells.length - 1);
-                var newTextInput = document.createElement('input');
-                newTextInput.type = 'text';
-                newTextInput.className = 'form-control small-input';
-                newCell.appendChild(newTextInput);
-            }
-        }
-
-        function deleteColumn(index) {
-            var table = document.getElementById("sensor-table");
-            var rows = table.rows;
-
-            // Remove the column from each row
-            for (var i = 0; i < rows.length; i++) {
-                rows[i].deleteCell(index);
-            }
-        }
-
-        // Add event listener for add column button
-        document.querySelector('.add-column-btn').addEventListener('click', addNewColumn);
-    });
-</script>
-
-
-           <div id="data4" class="data">
-            <h1 class="dust-textsize">Dust Sensor Module</h1>
-            <div class="container">
-                <span class="sensor-count">Sensor Count : 4</span>
-                <div class="form-group col-md-4">
-                    <label for="date">Date</label>
-                    <input type="date" id="date" name="date" class="form-control">
+            <div id="data3" class="data">
+                <h2>Board and Sensor Replacement</h2>
+                <div class="search-status-container">
+                    <div class="search-container">
+                        <label for="search-sl-no">Serial.No</label>
+                        <input type="text" id="search-sl-no" class="form-control">
+                        <button class="search-btn"><img src="search-icon.png" alt="Search"></button>
+                    </div>
+                    <div class="status-container">
+                        <div class="status-box failed">
+                            <span class="status-title">Failed</span>
+                        </div>
+                        <div class="status-box issue">
+                            <span class="status-title">Issue will be displayed</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="search-section">
-                    <label for="search-slno">Search SL.No :</label>
-                    <input type="text" id="search-slno" />
-                    <button class="search-button">&#128269;</button>
+                <div class="counts-container">
+                    <div class="count-box">
+                        <div class="count-item">
+                            <p class="count-title">Sensor Count</p>
+                            <p class="count-value" id="sensor-count">0</p>
+                        </div>
+                        <div class="count-divider"></div> <!-- Vertical line -->
+                        <div class="count-item">
+                            <p class="count-title">Board Count</p>
+                            <p class="count-value" id="board-count">0</p>
+                        </div>
+                    </div>
                 </div>
-                <table>
+                <table id="sensor-table" class="table">
                     <thead>
                         <tr>
-                            <th>SL.No</th>
-                            <th>TI SL.No</th>
-                            <th>Status</th>
-                            <th>Rejection</th>
+                            <th>PARTS Name</th>
+                            <th>PARTS No</th>
+                            <th><input type="date" name="date-1" class="form-control small-input date-input"></th>
+                            <th class="column-controls">
+                                <button class="add-column-btn">Add</button>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>TUV-9001234</td>
-                            <td>
-                                <select class="status-dropdown">
-                                    <option value="passed" class="passed">PASSED</option>
-                                    <option value="failed" class="failed">FAILED</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select>
-                                    <option value=""></option>
-                                    <option value="yes">YES</option>
-                                    <option value="no">NO</option>
-                                </select>
-                            </td>
+                            <td>Sensor</td>
+                            <td><input type="text" name="part-no" class="form-control small-input"></td>
+                            <td><input type="text" name="date-1" class="form-control small-input"></td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td>2</td>
-                            <td>TUV-9001234</td>
-                            <td>
-                                <select class="status-dropdown">
-                                    <option value="passed" class="passed">PASSED</option>
-                                    <option value="failed" class="failed">FAILED</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select>
-                                    <option value=""></option>
-                                    <option value="yes">YES</option>
-                                    <option value="no">NO</option>
-                                </select>
-                            </td>
+                            <td>Proxy Board</td>
+                            <td><input type="text" name="part-no" class="form-control small-input"></td>
+                            <td><input type="text" name="date-1" class="form-control small-input"></td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td>3</td>
-                            <td>TUV-9001234</td>
-                            <td>
-                                <select class="status-dropdown">
-                                    <option value="passed" class="passed">PASSED</option>
-                                    <option value="failed" class="failed">FAILED</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select>
-                                    <option value=""></option>
-                                    <option value="yes">YES</option>
-                                    <option value="no">NO</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>TUV-9001234</td>
-                            <td>
-                                <select class="status-dropdown">
-                                    <option value="passed" class="passed">PASSED</option>
-                                    <option value="failed" class="failed">FAILED</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select>
-                                    <option value=""></option>
-                                    <option value="yes">YES</option>
-                                    <option value="no">NO</option>
-                                </select>
-                            </td>
+                            <td>Power Board</td>
+                            <td><input type="text" name="part-no" class="form-control small-input"></td>
+                            <td><input type="text" name="date-1" class="form-control small-input"></td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>
-                <div class="footer">
-                    <div class="form-group col-md-4">
-        
-                        <label for="cleared-dust">Who cleared Dust </label>
-                        <select id="cleared-dust">
-                            <option value=""></option>
-                            <option value="person1">Person 1</option>
-                            <option value="person2">Person 2</option>
-                            <option value="person3">Person 3</option>
-                        </select>
-                    </div>
-        
-                    <button class="save-buttons">SAVE</button>
-                </div>
-        
             </div>
-        </div>
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const statusDropdowns = document.querySelectorAll(".status-dropdown");
 
-                statusDropdowns.forEach((dropdown) => {
-                    dropdown.addEventListener("change", function () {
-                        applyStyles(dropdown);
-                    });
-                    applyStyles(dropdown); // Apply styles on page load based on initial value
-                });
 
-                function applyStyles(dropdown) {
-                    const selectedOption = dropdown.options[dropdown.selectedIndex];
-                    if (selectedOption.classList.contains("passed")) {
-                        dropdown.style.backgroundColor = "#d4edda";
-                        dropdown.style.color = "#155724";
-                    } else if (selectedOption.classList.contains("failed")) {
-                        dropdown.style.backgroundColor = "#f8d7da";
-                        dropdown.style.color = "#721c24";
-                    } else {
-                        dropdown.style.backgroundColor = "";
-                        dropdown.style.color = "";
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    function addNewColumn() {
+                        // Get the table and header row
+                        var table = document.getElementById("sensor-table");
+                        var headerRow = table.getElementsByTagName('thead')[0].rows[0];
+
+                        // Create new header cell with a date input
+                        var newHeaderCell = document.createElement('th');
+                        var newDateInput = document.createElement('input');
+                        newDateInput.type = 'date';
+                        newDateInput.className = 'form-control small-input date-input';
+                        newHeaderCell.appendChild(newDateInput);
+
+                        // Insert the delete button
+                        var deleteButton = document.createElement('button');
+                        deleteButton.className = 'delete-column-btn';
+                        deleteButton.innerHTML = 'Delete';
+                        deleteButton.onclick = function () {
+                            deleteColumn(newHeaderCell.cellIndex);
+                        };
+                        newHeaderCell.appendChild(deleteButton);
+
+                        // Append the new header cell before the 'Add' button column
+                        headerRow.insertBefore(newHeaderCell, headerRow.cells[headerRow.cells.length - 1]);
+
+                        // Append new cell in each row in tbody
+                        var rows = table.getElementsByTagName('tbody')[0].rows;
+                        for (var i = 0; i < rows.length; i++) {
+                            var newCell = rows[i].insertCell(rows[i].cells.length - 1);
+                            var newTextInput = document.createElement('input');
+                            newTextInput.type = 'text';
+                            newTextInput.className = 'form-control small-input';
+                            newCell.appendChild(newTextInput);
+                        }
                     }
-                }
-            });
-        </script>
+
+                    function deleteColumn(index) {
+                        var table = document.getElementById("sensor-table");
+                        var rows = table.rows;
+
+                        // Remove the column from each row
+                        for (var i = 0; i < rows.length; i++) {
+                            rows[i].deleteCell(index);
+                        }
+                    }
+
+                    // Add event listener for add column button
+                    document.querySelector('.add-column-btn').addEventListener('click', addNewColumn);
+                });
+            </script>
 
 
-        <div id="data5" class="data">
-            
-            <h2>Date-wise Assembled</h2>
-            <p>This is the data for the Date-wise Assembled feature.</p>
-        </div>
-
-        <div id="data6" class="data">
-            <h1 class="overall-textsize">Overall Assembled</h1>
-            
-           
-            <div class="container">
-                <h4>Overall Assembled Detector Details</h4>
-                <div class="new-detectors">
-                    <span>New detectors</span>
-                    <button class="detector-btn">ATTO</button>
-                    <button class="detector-btn">ATHENA</button>
-                </div>
-                <div class="details">
-                    <div class="left">
-                        <h3>New Detector Assembled</h3>
-                        <table>
+            <div id="data4" class="data">
+                <h1 class="dust-textsize">Dust Sensor Module</h1>
+                <div class="container">
+                    <span class="sensor-count">Sensor Count : 4</span>
+                    <div class="form-group col-md-4">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" name="date" class="form-control">
+                    </div>
+                    <div class="search-section">
+                        <label for="search-slno">Search SL.No :</label>
+                        <input type="text" id="search-slno" />
+                        <button class="search-button">&#128269;</button>
+                    </div>
+                    <table>
+                        <thead>
                             <tr>
-                                <th>Date</th>
-                                <th>Type</th>
-                                <th>Count</th>
+                                <th>SL.No</th>
+                                <th>TI SL.No</th>
+                                <th>Status</th>
+                                <th>Rejection</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>TUV-9001234</td>
+                                <td>
+                                    <select class="status-dropdown">
+                                        <option value="passed" class="passed">PASSED</option>
+                                        <option value="failed" class="failed">FAILED</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select>
+                                        <option value=""></option>
+                                        <option value="yes">YES</option>
+                                        <option value="no">NO</option>
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
-                                <td>2023-06-01</td>
-                                <td>ATTO</td>
-                                <td>5</td>
-                            </tr>
-                            <tr>
-                                <td>2023-06-02</td>
-                                <td>ATHENA</td>
-                                <td>3</td>
-                            </tr>
-                            <tr>
-                                <td>2023-06-03</td>
-                                <td>ATTO</td>
                                 <td>2</td>
+                                <td>TUV-9001234</td>
+                                <td>
+                                    <select class="status-dropdown">
+                                        <option value="passed" class="passed">PASSED</option>
+                                        <option value="failed" class="failed">FAILED</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select>
+                                        <option value=""></option>
+                                        <option value="yes">YES</option>
+                                        <option value="no">NO</option>
+                                    </select>
+                                </td>
                             </tr>
-                        </table>
-                    </div>
-                    <div class="right">
-                        <h3>Date wise count Assembled</h3>
-                        <div class="filters">
-                            <label>Start: <input type="date" id="start-date"></label>
-                            <label>End: <input type="date" id="end-date"></label>
-                            <label>Type:
-                                <select id="type">
-                                    <option value="all">All</option>
-                                    <option value="ATTO">ATTO</option>
-                                    <option value="ATHENA">ATHENA</option>
-                                </select>
-                            </label>
+                            <tr>
+                                <td>3</td>
+                                <td>TUV-9001234</td>
+                                <td>
+                                    <select class="status-dropdown">
+                                        <option value="passed" class="passed">PASSED</option>
+                                        <option value="failed" class="failed">FAILED</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select>
+                                        <option value=""></option>
+                                        <option value="yes">YES</option>
+                                        <option value="no">NO</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>TUV-9001234</td>
+                                <td>
+                                    <select class="status-dropdown">
+                                        <option value="passed" class="passed">PASSED</option>
+                                        <option value="failed" class="failed">FAILED</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select>
+                                        <option value=""></option>
+                                        <option value="yes">YES</option>
+                                        <option value="no">NO</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="footer">
+                        <div class="form-group col-md-4">
+
+                            <label for="cleared-dust">Who cleared Dust </label>
+                            <select id="cleared-dust">
+                                <option value=""></option>
+                                <option value="person1">Person 1</option>
+                                <option value="person2">Person 2</option>
+                                <option value="person3">Person 3</option>
+                            </select>
                         </div>
-                        <table>
-                            <tr>
-                                <th>Count</th>
-                            </tr>
-                            <tr>
-                                <td id="count">0</td>
-                            </tr>
-                        </table>
+
+                        <button class="save-buttons">SAVE</button>
                     </div>
+
                 </div>
-                <button class="done-btn">DONE</button>
             </div>
-        </div>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const statusDropdowns = document.querySelectorAll(".status-dropdown");
+
+                    statusDropdowns.forEach((dropdown) => {
+                        dropdown.addEventListener("change", function () {
+                            applyStyles(dropdown);
+                        });
+                        applyStyles(dropdown); // Apply styles on page load based on initial value
+                    });
+
+                    function applyStyles(dropdown) {
+                        const selectedOption = dropdown.options[dropdown.selectedIndex];
+                        if (selectedOption.classList.contains("passed")) {
+                            dropdown.style.backgroundColor = "#d4edda";
+                            dropdown.style.color = "#155724";
+                        } else if (selectedOption.classList.contains("failed")) {
+                            dropdown.style.backgroundColor = "#f8d7da";
+                            dropdown.style.color = "#721c24";
+                        } else {
+                            dropdown.style.backgroundColor = "";
+                            dropdown.style.color = "";
+                        }
+                    }
+                });
+            </script>
+
+
+            <div id="data5" class="data">
+
+                <h2>Date-wise Assembled</h2>
+                <p>This is the data for the Date-wise Assembled feature.</p>
+            </div>
+
+            <div id="data6" class="data">
+                <h1 class="overall-textsize">Overall Assembled</h1>
+
+
+                <div class="container">
+                    <h4>Overall Assembled Detector Details</h4>
+                    <div class="new-detectors">
+                        <span>New detectors</span>
+                        <button class="detector-btn">ATTO</button>
+                        <button class="detector-btn">ATHENA</button>
+                    </div>
+                    <div class="details">
+                        <div class="left">
+                            <h3>New Detector Assembled</h3>
+                            <table>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Count</th>
+                                </tr>
+                                <tr>
+                                    <td>2023-06-01</td>
+                                    <td>ATTO</td>
+                                    <td>5</td>
+                                </tr>
+                                <tr>
+                                    <td>2023-06-02</td>
+                                    <td>ATHENA</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>2023-06-03</td>
+                                    <td>ATTO</td>
+                                    <td>2</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="right">
+                            <h3>Date wise count Assembled</h3>
+                            <div class="filters">
+                                <label>Start: <input type="date" id="start-date"></label>
+                                <label>End: <input type="date" id="end-date"></label>
+                                <label>Type:
+                                    <select id="type">
+                                        <option value="all">All</option>
+                                        <option value="ATTO">ATTO</option>
+                                        <option value="ATHENA">ATHENA</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <table>
+                                <tr>
+                                    <th>Count</th>
+                                </tr>
+                                <tr>
+                                    <td id="count">0</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <button class="done-btn">DONE</button>
+                </div>
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
                     const startDateInput = document.getElementById('start-date');
                     const endDateInput = document.getElementById('end-date');
                     const typeSelect = document.getElementById('type');
@@ -643,15 +643,15 @@
                     typeSelect.addEventListener('change', updateCount);
                 });
 
-        </script>
+            </script>
 
-        <div id="data7" class="data">
-            <h2></h2>
-            <h1 class="oddo-textsize">ODDO Status Update</h1>
-            
-           
+            <div id="data7" class="data">
+                <h2></h2>
+                <h1 class="oddo-textsize">ODDO Status Update</h1>
+
+
                 <div class="container">
-                   
+
                     <div class="form-group col-md-4">
                         <label for="date">Date</label>
                         <input type="date" id="date" name="date" class="form-control">
@@ -667,7 +667,7 @@
                                 <th>SL.No</th>
                                 <th>TI SL.No</th>
                                 <th>Procedure Status</th>
-                            
+
                             </tr>
                         </thead>
                         <tbody>
@@ -680,7 +680,7 @@
                                         <option value="failed" class="failed">FAILED</option>
                                     </select>
                                 </td>
-                               
+
                             </tr>
                             <tr>
                                 <td>2</td>
@@ -691,7 +691,7 @@
                                         <option value="failed" class="failed">FAILED</option>
                                     </select>
                                 </td>
-                                
+
                             </tr>
                             <tr>
                                 <td>3</td>
@@ -702,28 +702,28 @@
                                         <option value="failed" class="failed">FAILED</option>
                                     </select>
                                 </td>
-                                
+
                             </tr>
                             <tr>
                                 <td>4</td>
                                 <td>TUV-9001234</td>
                                 <td>
-                                    <select class="status-dropdown"id="len">
+                                    <select class="status-dropdown" id="len">
                                         <option value="passed" class="passed">PASSED</option>
                                         <option value="failed" class="failed">FAILED</option>
                                     </select>
                                 </td>
-                               
+
                             </tr>
                         </tbody>
                     </table>
-                    
-            
-                        <button class="save-buttonss">SAVE</button>
-                    </div>
-            
+
+
+                    <button class="save-buttonss">SAVE</button>
                 </div>
-            
+
+            </div>
+
             <script>
                 document.addEventListener("DOMContentLoaded", function () {
                     const statusDropdowns = document.querySelectorAll(".status-dropdown");
