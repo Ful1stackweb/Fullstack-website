@@ -278,67 +278,83 @@
 
 
             <div id="data3" class="data">
-                <h2>Board and Sensor Replacement</h2>
-                <div class="search-status-container">
-                    <div class="search-container">
-                        <label for="search-sl-no">Serial.No</label>
-                        <input type="text" id="search-sl-no" class="form-control">
-                        <button class="search-btn"><img src="search-icon.png" alt="Search"></button>
-                    </div>
-                    <div class="status-container">
-                        <div class="status-box failed">
-                            <span class="status-title">Failed</span>
-                        </div>
-                        <div class="status-box issue">
-                            <span class="status-title">Issue will be displayed</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="counts-container">
-                    <div class="count-box">
-                        <div class="count-item">
-                            <p class="count-title">Sensor Count</p>
-                            <p class="count-value" id="sensor-count">0</p>
-                        </div>
-                        <div class="count-divider"></div> <!-- Vertical line -->
-                        <div class="count-item">
-                            <p class="count-title">Board Count</p>
-                            <p class="count-value" id="board-count">0</p>
+                <div class="header-container">
+                    <h2>Board and Sensor Replacement</h2>
+                    <div class="counts-container">
+                        <div class="count-box">
+                            <div class="count-item">
+                                <p class="count-title">Sensor Count</p>
+                                <p class="count-value" id="sensor-count">0</p>
+                            </div>
+                            <div class="count-divider"></div> <!-- Vertical line -->
+                            <div class="count-item">
+                                <p class="count-title">Board Count</p>
+                                <p class="count-value" id="board-count">0</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <table id="sensor-table" class="table">
-                    <thead>
-                        <tr>
-                            <th>PARTS Name</th>
-                            <th>PARTS No</th>
-                            <th><input type="date" name="date-1" class="form-control small-input date-input"></th>
-                            <th class="column-controls">
-                                <button class="add-column-btn">Add</button>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Sensor</td>
-                            <td><input type="text" name="part-no" class="form-control small-input"></td>
-                            <td><input type="text" name="date-1" class="form-control small-input"></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Proxy Board</td>
-                            <td><input type="text" name="part-no" class="form-control small-input"></td>
-                            <td><input type="text" name="date-1" class="form-control small-input"></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Power Board</td>
-                            <td><input type="text" name="part-no" class="form-control small-input"></td>
-                            <td><input type="text" name="date-1" class="form-control small-input"></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="content-container">
+                    <div class="search-status-container">
+                        <div class="search-container">
+                            <label for="search-sl-no">Serial.No</label>
+                            <input type="text" id="search-sl-no" class="form-control">
+                            <button class="search-btn"><img src="search-icon.png" alt="Search"></button>
+                        </div>
+                        <div class="status-container">
+                            <div class="status-box failed">
+                                <span class="status-title">Failed</span>
+                            </div>
+                            <div class="status-box issue">
+                                <span class="status-title">Issue will be displayed</span>
+                            </div>
+                        </div>
+                    </div>
+                    <table id="sensor-table" class="table">
+                        <thead>
+                            <tr>
+                                <th>PARTS Name</th>
+                                <th>PARTS No</th>
+                                <th><input type="date" name="date-1" class="form-control small-input date-input"></th>
+                                <th class="column-controls">
+                                    <button class="add-column-btn">Add</button>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sensor</td>
+                                <td><input type="text" name="part-no" class="form-control small-input"></td>
+                                <td><input type="text" name="date-1" class="form-control small-input"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Proxy Board</td>
+                                <td><input type="text" name="part-no" class="form-control small-input"></td>
+                                <td><input type="text" name="date-1" class="form-control small-input"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Power Board</td>
+                                <td><input type="text" name="part-no" class="form-control small-input"></td>
+                                <td><input type="text" name="date-1" class="form-control small-input"></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="dropdown-container">
+                        <label for="dropdown1">What was changed in detector :</label>
+                        <select id="dropdown1" class="dropdown">
+                            <option value="">Board details</option>
+                            <!-- Add other options as necessary -->
+                        </select>
+                        <select id="dropdown2" class="dropdown">
+                            <option value="">Who changed Boards</option>
+                            <!-- Add other options as necessary -->
+                        </select>
+                        <button class="save-btn">SAVE</button>
+                    </div>
+                </div>
             </div>
 
 
@@ -389,9 +405,65 @@
                         }
                     }
 
+                    function saveData() {
+                        // Collect data from the table
+                        var table = document.getElementById("sensor-table");
+                        var tableData = [];
+                        var headers = table.getElementsByTagName('thead')[0].rows[0].cells;
+                        var rows = table.getElementsByTagName('tbody')[0].rows;
+
+                        for (var i = 0; i < rows.length; i++) {
+                            var rowData = {};
+                            for (var j = 0; j < headers.length - 1; j++) { // Skip the last cell which contains the 'Add' button
+                                var headerText = headers[j].textContent || headers[j].querySelector('input').value;
+                                var cellValue = rows[i].cells[j].querySelector('input').value;
+                                rowData[headerText] = cellValue;
+                            }
+                            tableData.push(rowData);
+                        }
+
+                        // Collect data from dropdowns
+                        var dropdown1Value = document.getElementById('dropdown1').value;
+                        var dropdown2Value = document.getElementById('dropdown2').value;
+
+                        // Collect sensor and board counts
+                        var sensorCount = document.getElementById('sensor-count').textContent;
+                        var boardCount = document.getElementById('board-count').textContent;
+
+                        // Create data object to send to server
+                        var data = {
+                            tableData: tableData,
+                            dropdown1: dropdown1Value,
+                            dropdown2: dropdown2Value,
+                            sensorCount: sensorCount,
+                            boardCount: boardCount
+                        };
+
+                        // Send data to server
+                        fetch('/save-data', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(data)
+                        })
+                            .then(response => response.json())
+                            .then(result => {
+                                alert('Data saved successfully!');
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                alert('Failed to save data.');
+                            });
+                    }
+
                     // Add event listener for add column button
                     document.querySelector('.add-column-btn').addEventListener('click', addNewColumn);
+
+                    // Add event listener for save button
+                    document.querySelector('.save-btn').addEventListener('click', saveData);
                 });
+
             </script>
 
 
@@ -534,10 +606,66 @@
 
 
             <div id="data5" class="data">
+                <h2>Assembled Detectors</h2>
 
-                <h2>Date-wise Assembled</h2>
-                <p>This is the data for the Date-wise Assembled feature.</p>
+                <!-- Content specific to data5 -->
+                <div class="assembled-sensor">
+                    <div class="sensor-options text-center">
+                        <label><input type="radio" name="sensor-type" value="atto"> Atto Sensor</label>
+                        <label><input type="radio" name="sensor-type" value="athena"> Athena Sensor</label>
+                        <label><input type="radio" name="sensor-type" value="old"> Old Sensor details</label>
+                    </div>
+
+                    <div class="sensor-rows">
+                        <div class="sensor-row">
+                            <span class="sensor-date">20/04/2024</span>
+                            <span class="sensor-type">Atto - panhead</span>
+                            <span class="sensor-count">Assembled Count - 70</span>
+                            <a href="#" class="view-link">VIEW</a>
+                        </div>
+                        <div class="sensor-row">
+                            <span class="sensor-date">20/04/2024</span>
+                            <span class="sensor-type">Atto - panhead</span>
+                            <span class="sensor-count">Assembled Count - 70</span>
+                            <a href="#" class="view-link">VIEW</a>
+                        </div>
+                        <!-- Additional sensor rows here -->
+                    </div>
+
+                    <div class="table-container">
+                        <table class="detector-table">
+                            <thead>
+                                <tr>
+                                    <th>Ti Detector SI. No</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>TUV-9004578</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="save-btn-container text-center">
+                        <button class="save-btn">DONE</button>
+                    </div>
+                </div>
             </div>
+
+            <script>
+                // JavaScript specific to data5 if needed
+                document.addEventListener('DOMContentLoaded', function () {
+                    function saveData() {
+                        alert('Data saved successfully!');
+                    }
+
+                    // Add event listener for save button
+                    document.querySelector('#data5 .save-btn').addEventListener('click', saveData);
+                });
+
+
+            </script>
 
             <div id="data6" class="data">
                 <h1 class="overall-textsize">Overall Assembled</h1>

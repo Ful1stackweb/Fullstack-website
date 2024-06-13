@@ -200,7 +200,7 @@ h1 {
     font-weight: bold;
     color: #d22323;
     /* Choose your desired color */
-    margin-bottom: 10px;
+    margin-bottom: 50px;
     /* Adjust margin bottom as needed */
 }
 
@@ -548,19 +548,22 @@ table td {
     border-radius: 4px;
     cursor: pointer;
 }
-#positioning{
+
+#positioning {
     display: block;
-        /* Make the button a block element */
-        margin-left: 0px;
-        
+    /* Make the button a block element */
+    margin-left: 0px;
+
 }
+
 .save-button:hover {
     background-color: #45a049;
 }
+
 .new-counts-container {
     text-align: center;
     margin-bottom: 20px;
-    
+
 }
 
 .new-count-box {
@@ -652,94 +655,174 @@ img {
     width: 400px;
     /* Adjust this value to your desired width */
 }
+
 #search-bar {
     text-align: center;
     margin-bottom: -85px;
 }
 
-#search-style{
+#search-style {
     padding: 5px;
-        margin-left: 10px;
-        margin-right: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
     margin-right: 10px;
     position: relative;
     text-align: center;
 }
-.counts-containers{
+
+.counts-containers {
     margin-right: -900px;
 }
 
 /*-----DATA 3-------------------------------DATA 3-------------------------*/
-/* Table Styles */
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
 
+h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    flex: 1;
+}
+
+/* Header Container */
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 20px;
+}
+
+.counts-container {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Counts Container */
+.counts-container {
+    display: flex;
+    align-items: center;
+}
+
+.count-box {
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+}
+
+.count-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.count-box .count-item {
+    text-align: center;
+}
+
+.count-box .count-item span {
+    display: block;
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+}
+
+.count-box .count-item .count-title {
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.count-box .count-item .count-value {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.count-box .count-divider {
+    border-right: 1px solid #ccc;
+    height: 50px;
+    margin: 0 10px;
+}
+
+/* Content Container */
+.content-container {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Styles */
 #sensor-table {
-    width: 50%;
-    /* Fix the width of the table to 50% */
+    width: 100%;
     table-layout: fixed;
-    /* Ensure fixed table layout */
     border-collapse: collapse;
-    margin: 0 auto;
-    /* Center the table */
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 #sensor-table th,
 #sensor-table td {
     border: 1px solid #ddd;
-    padding: 3px;
-    /* Adjust padding */
+    padding: 10px;
     text-align: center;
     word-wrap: break-word;
-    /* Ensure content wraps within cells */
 }
 
 #sensor-table th {
-    background-color: #f2f2f2;
+    background-color: #007bff;
+    color: #fff;
     font-weight: bold;
+}
+
+#sensor-table td {
+    background-color: #f9f9f9;
 }
 
 .form-control.small-input {
     width: calc(100% - 6px);
-    /* Adjust width of input */
     box-sizing: border-box;
-    padding: 2px;
-    /* Adjust padding */
-}
-
-.small-input {
-    width: 100px;
+    padding: 5px;
 }
 
 .column-controls {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Center the content */
 }
 
 .add-column-btn,
 .delete-column-btn {
     background-color: #007bff;
-    /* Bootstrap primary color */
     color: white;
     border: none;
     padding: 5px 10px;
     margin-left: 5px;
     cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
 .add-column-btn:hover,
 .delete-column-btn:hover {
     background-color: #0056b3;
-    /* Darker shade of primary color */
-}
-
-.delete-column-btn {
-    margin-left: 10px;
 }
 
 /* Additional Styles */
-
 .search-status-container {
     display: flex;
     flex-direction: column;
@@ -747,7 +830,6 @@ img {
     margin-top: 20px;
     margin-bottom: 20px;
     gap: 20px;
-    /* Space between elements */
 }
 
 .search-container {
@@ -755,7 +837,6 @@ img {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    /* Space between elements */
 }
 
 .search-container label {
@@ -774,30 +855,20 @@ img {
 }
 
 /* Status Container */
-
 .status-container {
     display: flex;
     justify-content: center;
-    /* Center horizontally */
     align-items: center;
-    border: 2px solid #000000;
-    /* Border color */
+    border: 2px solid #b7b7b7;
     border-radius: 5px;
-    /* Border radius */
     padding: 5px;
-    /* Adjust padding */
-    width: 50%;
-    /* Adjust width to your preference */
+    width: 80%;
     text-align: center;
-    /* Center text inside */
     gap: 10px;
-    /* Space between status boxes */
     margin-bottom: 20px;
-    /* Add margin at the bottom for spacing */
 }
 
 .status-box {
-    flex: 1;
     padding: 10px;
     border-radius: 5px;
     font-weight: bold;
@@ -806,84 +877,47 @@ img {
 }
 
 .status-box.failed {
+    flex: 0 0 30%;
     background-color: #ffcccc;
-    /* Light red background */
     color: red;
-    /* Red text */
 }
 
 .status-box.issue {
+    flex: 0 0 70%;
     background-color: #ccffcc;
-    /* Light green background */
     color: green;
-    /* Green text */
 }
 
-/* Counts Container */
-
-.counts-container {
+/* Dropdown Container */
+.dropdown-container {
     display: flex;
-    justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
-
-.count-box {
-    background-color: #f2f2f2;
-    padding: 10px;
-    border-radius: 5px;
-    width: fit-content;
-    /* Adjusted width */
-    box-sizing: border-box;
-    display: flex;
     justify-content: space-between;
-    /* Space between the counts */
-    align-items: center;
-    /* Center the items vertically */
-    margin: 0 auto;
-    /* Center horizontally */
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
 }
 
-.count-box:hover {
-    transform: scale(1.05);
-    /* Scale effect on hover */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    /* Add shadow on hover */
+.dropdown {
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
 }
 
-.count-box .count-item {
-    text-align: center;
-}
-
-.count-box .count-item span {
-    display: block;
-    font-weight: bold;
-    /* Set text to bold */
-    font-size: 16px;
-    color: #333;
-    /* Text color */
-}
-
-.count-box .count-item .count-title {
-    margin-bottom: 5px;
-    color: #666;
-    /* Text color */
-}
-
-.count-box .count-item .count-value {
-    font-size: 18px;
+.save-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
     font-weight: bold;
 }
 
-.count-box .count-divider {
-    border-right: 1px solid #ccc;
-    /* Vertical line between counts */
-    height: 50px;
-    /* Adjust the height as needed */
-    margin: 0 10px;
-    /* Adjust the space between the line and counts */
+.save-btn:hover {
+    background-color: #218838;
 }
 
 
@@ -1007,6 +1041,109 @@ td {
     background-color: #45a049;
 }
 
+/*------------DATA5----------------------DATA5-----------------------------*/
+
+/* Assembled Sensor Container */
+.assembled-sensor {
+    padding: 20px;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 65%;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Sensor Options Styles */
+.assembled-sensor .sensor-options {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.assembled-sensor .sensor-options label {
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+/* Sensor Rows Styles */
+.assembled-sensor .sensor-rows {
+    margin-bottom: 20px;
+}
+
+.assembled-sensor .sensor-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    background-color: #eeeeee;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.assembled-sensor .sensor-date,
+.assembled-sensor .sensor-type,
+.assembled-sensor .sensor-count {
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+}
+
+.assembled-sensor .view-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.assembled-sensor .view-link:hover {
+    text-decoration: underline;
+}
+
+/* Detector Table Styles */
+.assembled-sensor .table-container {
+    margin: 20px 0;
+}
+
+.assembled-sensor .detector-table {
+    border-collapse: collapse;
+    width: 30%;
+    margin: auto;
+}
+
+.assembled-sensor .detector-table th,
+.assembled-sensor .detector-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.assembled-sensor .detector-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+/* Save Button Styles */
+.assembled-sensor .save-btn-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.assembled-sensor .save-btn {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.assembled-sensor .save-btn:hover {
+    background-color: #4cae4c;
+}
+
 
 /*-----DATA 6-------------------------------DATA 6-------------------------*/
 
@@ -1092,9 +1229,11 @@ td {
     width: 100px;
     /* Adjust the width as needed */
 }
+
 .overall-textsize {
     font-size: 30px;
 }
+
 .done-btn {
     margin-top: 20px;
     padding: 10px 20px;
@@ -1126,6 +1265,6 @@ td {
     font-size: 30px;
 }
 
-#len{
+#len {
     width: 50%;
 }
