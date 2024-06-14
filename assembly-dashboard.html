@@ -475,11 +475,18 @@
                         <label for="date">Date</label>
                         <input type="date" id="date" name="date" class="form-control">
                     </div>
-                    <div class="search-section">
-                        <label for="search-slno">Search SL.No :</label>
-                        <input type="text" id="search-slno" />
-                        <button class="search-button">&#128269;</button>
+                    <div class="form-row centered" id="search-bar">
+                        <div class="form-group col-md-4">
+                            <label for="search-sl-no">Search SL.No</label>
+                            <div id="search-style" style="position: relative;">
+                                <input type="text" id="search-sl-no" class="form-control" onkeyup="searchTable()">
+                                <span style="position: absolute; right: 10px; top: 10px;">
+                                    <img src="/img/search.png" alt="Search" style="height: 20px; width: 20px;">
+                                </span>
+                            </div>
+                        </div>
                     </div>
+                    <br><br><br><br>
                     <table>
                         <thead>
                             <tr>
@@ -717,14 +724,16 @@
                                     </select>
                                 </label>
                             </div>
-                            <table>
-                                <tr>
-                                    <th>Count</th>
-                                </tr>
-                                <tr>
-                                    <td id="count">0</td>
-                                </tr>
-                            </table>
+                            <div class="table-containers">
+                                <table class="small-table">
+                                    <tr>
+                                        <th>Count</th>
+                                    </tr>
+                                    <tr>
+                                        <td id="count" class="count-size">0</td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <button class="done-btn">DONE</button>
@@ -784,11 +793,18 @@
                         <label for="date">Date</label>
                         <input type="date" id="date" name="date" class="form-control">
                     </div>
-                    <div class="search-section">
-                        <label for="search-slno">Search SL.No :</label>
-                        <input type="text" id="search-slno" />
-                        <button class="search-button">&#128269;</button>
-                    </div>
+                        <div class="form-row centered" id="search-bar">
+                            <div class="form-group col-md-4">
+                                <label for="search-sl-no">Search SL.No</label>
+                                <div id="search-style" style="position: relative;">
+                                    <input type="text" id="search-sl-no" class="form-control" onkeyup="searchTable()">
+                                    <span style="position: absolute; right: 10px; top: 10px;">
+                                        <img src="/img/search.png" alt="Search" style="height: 20px; width: 20px;">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <br><br><br><br>
                     <table>
                         <thead>
                             <tr>

@@ -1244,6 +1244,30 @@ td {
     border-radius: 5px;
     cursor: pointer;
 }
+.table-containers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ .small-table {
+     width: 100px;
+     /* Adjust the width to your desired size */
+     border-collapse: collapse;
+     margin-right: 100px;
+ }
+
+ .small-table th,
+ .small-table td {
+     border: 1px solid black;
+     text-align: center;
+     padding: 8px;
+ }
+
+ #count {
+     width: 50px;
+     /* Adjust the width of the count cell if needed */
+ }
 
 /*-----DATA 7------------------------------DATA 7-------------------------*/
 
