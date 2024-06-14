@@ -122,6 +122,121 @@
                 </div>
             </div>
 
+            <script>
+                function toggleData(id) {
+                    var dataElement = document.getElementById(id);
+                    var defaultContent = document.getElementById('default-content');
+
+                    // Hide the default content
+                    defaultContent.style.display = "none";
+
+                    var allDataElements = document.querySelectorAll('.data');
+
+                    // Hide all data elements first
+                    allDataElements.forEach(function (element) {
+                        element.style.display = "none";
+                    });
+
+                    // Show the data corresponding to the clicked sublist
+                    dataElement.style.display = "block";
+                }
+
+                var currentSLno = 1; // Initialize SL.no counter
+
+                function addNewRow(input) {
+                    var currentRow = input.closest('tr'); // Get the current row
+                    var table = document.getElementById("my-table");
+
+                    // Check if the current row is the last row
+                    var isLastRow = currentRow === table.rows[table.rows.length - 1];
+
+                    // If the input value is empty and not the last row, delete the row
+                    // Ensure that the first row is never removed
+                    if (input.value.trim() === '' && !isLastRow && currentRow.rowIndex !== 1) {
+                        table.deleteRow(currentRow.rowIndex);
+                        // Update the total count
+                        updateTotalSerialCount();
+                        // Update SL.no for the remaining rows
+                        updateSerialNumbers();
+                        return;
+                    }
+
+                    // If the current row is the last row, add a new row
+                    if (input.value.trim() !== '' && isLastRow) {
+                        var newRow = table.insertRow(); // Insert a new row
+                        currentSLno++; // Increment SL.no counter
+                        newRow.innerHTML = `
+                    <td>${currentSLno}</td>
+                    <td><input type="text" name="tonbo-sl-no" class="form-control small-input" oninput="handleInput(this, 'tonbo-sl-no')"></td>
+                    <td><input type="text" name="sensor-sl-no" class="form-control small-input" oninput="handleInput(this, 'sensor-sl-no')"></td>
+                    <td><input type="text" name="proxy-board-sl-no" class="form-control small-input" oninput="handleInput(this, 'proxy-board-sl-no')"></td>
+                    <td><input type="text" name="power-board-sl-no" class="form-control small-input" oninput="handleInput(this, 'power-board-sl-no')"></td>
+                `;
+
+                        // Automatically focus on the first input field in the new row
+                        newRow.querySelector('input[name="tonbo-sl-no"]').focus();
+
+                        // Update the total count
+                        updateTotalSerialCount();
+                    }
+                }
+
+                function handleInput(input, columnName) {
+                    var currentRow = input.closest('tr'); // Get the current row
+                    var table = document.getElementById("my-table");
+
+                    // Add a new row if this is the last row and the input value is not empty
+                    addNewRow(input);
+
+                    // Move to the next row in the same column if the current input is not empty
+                    if (input.value.trim() !== '') {
+                        var nextRow = currentRow.nextElementSibling;
+                        if (nextRow) {
+                            var nextInput = nextRow.querySelector(`input[name="${columnName}"]`);
+                            if (nextInput) {
+                                nextInput.focus();
+                            }
+                        }
+                    }
+                }
+
+                function updateTotalSerialCount() {
+                    var table = document.getElementById("my-table");
+                    var rowCount = 0;
+
+                    // Count the number of filled Tonbo SL.no cells
+                    for (var i = 1, row; row = table.rows[i]; i++) {
+                        var tonboCell = row.cells[1].querySelector('input[name="tonbo-sl-no"]');
+                        if (tonboCell && tonboCell.value.trim() !== '') {
+                            rowCount++;
+                        }
+                    }
+
+                    // Update the total count display
+                    document.getElementById('total-serial-count').textContent = rowCount;
+                }
+
+                // Update SL.no for the remaining rows after deletion
+                function updateSerialNumbers() {
+                    var table = document.getElementById("my-table");
+                    for (var i = 1; i < table.rows.length; i++) {
+                        table.rows[i].cells[0].textContent = i;
+                    }
+                }
+
+                // Add event listeners to all input fields for the initial row
+                document.querySelectorAll('input[name="tonbo-sl-no"], input[name="sensor-sl-no"], input[name="proxy-board-sl-no"], input[name="power-board-sl-no"]').forEach(function (input) {
+                    input.addEventListener('input', function () {
+                        handleInput(this, input.name);
+                        updateTotalSerialCount(); // Update the total count when any input changes
+                    });
+                });
+
+                // Update total count initially
+                updateTotalSerialCount();
+
+            </script>
+
 
 
 
@@ -607,8 +722,6 @@
 
             <div id="data5" class="data">
                 <h2>Assembled Detectors</h2>
-
-                <!-- Content specific to data5 -->
                 <div class="assembled-sensor">
                     <div class="sensor-options text-center">
                         <label><input type="radio" name="sensor-type" value="atto"> Atto Sensor</label>
@@ -660,16 +773,17 @@
                         alert('Data saved successfully!');
                     }
 
-                    // Add event listener for save button
+                    // Add event listener for save button in data5
                     document.querySelector('#data5 .save-btn').addEventListener('click', saveData);
-                });
+                })
+
 
 
             </script>
 
+
             <div id="data6" class="data">
                 <h1 class="overall-textsize">Overall Assembled</h1>
-
 
                 <div class="container">
                     <h4>Overall Assembled Detector Details</h4>
@@ -882,130 +996,222 @@
         </div>
 
         <div id="data8" class="data">
-            <h2>Tonbo Detector</h2>
-            <p>This is the data for the Tonbo Detector feature.</p>
+            <h1 class="overall-textsize">Detector History</h1>
+            <div class="search-box">
+                <span>Detector S.I. No:</span>
+                <input type="text" id="detector-serial" class="detector-serial" placeholder="Enter Serial Number">
+                <button class="search-btn" onclick="searchDetector()">Search</button>
+            </div>
+
+            <div class="container">
+                <div class="timeline">
+                    <div class="stage completed">
+                        <div class="circle green">
+                            <div class="small-circle black"></div>
+                        </div>
+                        <div class="line-horizontal"></div>
+                        <span>Assembly</span>
+                    </div>
+                    <div class="stage completed">
+                        <div class="circle green">
+                            <div class="small-circle black"></div>
+                        </div>
+                        <div class="line-horizontal"></div>
+                        <span>Chamber Calibration</span>
+                    </div>
+                    <div class="stage in-progress">
+                        <div class="circle red">
+                            <div class="small-circle black"></div>
+                        </div>
+                        <div class="line-horizontal"></div>
+                        <span>Post Calibration</span>
+                    </div>
+                    <div class="stage">
+                        <div class="circle grey">
+                            <div class="small-circle black"></div>
+                        </div>
+                        <span>Testing</span>
+                    </div>
+                    <div class="stage">
+                        <div class="circle grey">
+                            <div class="small-circle black"></div>
+                        </div>
+                        <span>Sent to Store</span>
+                    </div>
+                </div>
+                <div class="details">
+                    <table>
+                        <tr>
+                            <th>Stage</th>
+                            <th>Date</th>
+                            <th>Details</th>
+                        </tr>
+                        <tr>
+                            <td>Assembly</td>
+                            <td>25/04/2024</td>
+                            <td><button class="view-link" onclick="viewDetails(0)">View</button></td>
+                        </tr>
+                        <tr>
+                            <td>Chamber Calibration</td>
+                            <td>26/04/2024</td>
+                            <td><button class="view-link" onclick="viewDetails(1)">View</button></td>
+                        </tr>
+                        <tr>
+                            <td>Post Calibration</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Testing</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Sent to Store</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                <button class="done-btn" onclick="finalizeHistory()">DONE</button>
+            </div>
         </div>
+
+        <script>
+            // Sample data for demonstration
+            const detectorData = {
+                "123456": {
+                    stages: [
+                        { name: "Assembly", date: "25/04/2024" },
+                        { name: "Chamber Calibration", date: "26/04/2024" },
+                        { name: "Post Calibration", date: null },
+                        { name: "Testing", date: null },
+                        { name: "Sent to Store", date: null }
+                    ]
+                }
+                // Add more detector data as needed
+            };
+
+            function searchDetector() {
+                const serialNumber = document.getElementById('detector-serial').value.trim(); // Ensure to trim whitespace
+
+                // Debugging: Check the value of serialNumber
+                console.log("Searching for detector with serial number:", serialNumber);
+
+                const detector = detectorData[serialNumber]; // Assuming detectorData is globally accessible
+
+                if (detector) {
+                    updateTimeline(detector);
+                    updateDetails(detector);
+                } else {
+                    alert("Detector not found. Please enter a valid Serial Number.");
+                }
+            }
+
+            function updateTimeline(detector) {
+                const timelineStages = document.querySelectorAll('#data8 .stage');
+                timelineStages.forEach((stage, index) => {
+                    const stageData = detector.stages[index];
+                    const circle = stage.querySelector('.circle');
+                    const smallCircle = circle.querySelector('.small-circle');
+                    const line = stage.querySelector('.line-horizontal');
+                    const span = stage.querySelector('span');
+
+                    if (stageData) {
+                        circle.style.backgroundColor = getColorForStage(stageData.name);
+                        if (stageData.date) {
+                            smallCircle.style.display = 'block';
+                            line.style.backgroundColor = '#ccc';
+                        } else {
+                            smallCircle.style.display = 'none';
+                            line.style.backgroundColor = 'transparent';
+                        }
+                        span.textContent = stageData.name;
+                    } else {
+                        circle.style.backgroundColor = '#ddd'; // Default grey
+                        smallCircle.style.display = 'none';
+                        span.textContent = '';
+                        line.style.backgroundColor = 'transparent';
+                    }
+                });
+            }
+
+            function updateDetails(detector) {
+                const detailsTable = document.querySelector('#data8 .details table');
+                const rows = detailsTable.rows;
+                detector.stages.forEach((stage, index) => {
+                    if (rows[index + 1]) { // Skip the header row (index 0)
+                        const cells = rows[index + 1].cells;
+                        cells[1].textContent = stage.date || ''; // Update date column
+                        cells[2].innerHTML = stage.date ? '<button class="view-link" data-index="' + index + '">View</button>' : ''; // Update details column with view button
+                    }
+                });
+
+                // Reattach event listeners for view links after updating table
+                attachViewLinksEventListeners();
+            }
+
+            function viewDetails(index) {
+                const detailsTable = document.querySelector('#data8 .details table');
+                const rows = detailsTable.rows;
+                const stageName = rows[index + 1].cells[0].textContent; // Get stage name from table
+
+                // Simulate fetching details for demonstration
+                const details = {
+                    "Assembly": "Details for Assembly stage.",
+                    "Chamber Calibration": "Details for Chamber Calibration stage."
+                    // Add more details as needed
+                };
+
+                alert(details[stageName] || "Details not available.");
+            }
+
+            function getColorForStage(stageName) {
+                switch (stageName) {
+                    case "Assembly":
+                        return "#4CAF50"; // Green
+                    case "Chamber Calibration":
+                        return "#4CAF50"; // Green
+                    case "Post Calibration":
+                        return "#f44336"; // Red
+                    case "Testing":
+                    case "Sent to Store":
+                        return "#ddd"; // Grey
+                    default:
+                        return "#ddd"; // Default grey
+                }
+            }
+
+            function finalizeHistory() {
+                alert("History finalized!");
+                // Implement finalization logic as needed
+            }
+
+            // Function to attach event listeners to view links dynamically
+            function attachViewLinksEventListeners() {
+                document.querySelectorAll('.view-link').forEach(link => {
+                    link.addEventListener('click', function () {
+                        const index = parseInt(this.dataset.index); // Get index from data-index attribute
+                        viewDetails(index);
+                    });
+                });
+            }
+
+            // Attach initial event listeners
+            document.querySelector('.search-btn').addEventListener('click', searchDetector);
+            document.querySelector('.done-btn').addEventListener('click', finalizeHistory);
+
+            // Attach view links event listeners initially
+            attachViewLinksEventListeners();
+
+        </script>
+
     </div>
     </div>
 
     <footer id="footer" class="bg-dark text-white text-center py-0 mt-0">
         <p class="m-0">Tonbo Imaging &copy; 2024</p>
     </footer>
-
-    <script>
-        function toggleData(id) {
-            var dataElement = document.getElementById(id);
-            var defaultContent = document.getElementById('default-content');
-
-            // Hide the default content
-            defaultContent.style.display = "none";
-
-            var allDataElements = document.querySelectorAll('.data');
-
-            // Hide all data elements first
-            allDataElements.forEach(function (element) {
-                element.style.display = "none";
-            });
-
-            // Show the data corresponding to the clicked sublist
-            dataElement.style.display = "block";
-        }
-
-        var currentSLno = 1; // Initialize SL.no counter
-
-        function addNewRow(input) {
-            var currentRow = input.closest('tr'); // Get the current row
-            var table = document.getElementById("my-table");
-
-            // Check if the current row is the last row
-            var isLastRow = currentRow === table.rows[table.rows.length - 1];
-
-            // If the input value is empty and not the last row, delete the row
-            // Ensure that the first row is never removed
-            if (input.value.trim() === '' && !isLastRow && currentRow.rowIndex !== 1) {
-                table.deleteRow(currentRow.rowIndex);
-                // Update the total count
-                updateTotalSerialCount();
-                // Update SL.no for the remaining rows
-                updateSerialNumbers();
-                return;
-            }
-
-            // If the current row is the last row, add a new row
-            if (input.value.trim() !== '' && isLastRow) {
-                var newRow = table.insertRow(); // Insert a new row
-                currentSLno++; // Increment SL.no counter
-                newRow.innerHTML = `
-            <td>${currentSLno}</td>
-            <td><input type="text" name="tonbo-sl-no" class="form-control small-input" oninput="handleInput(this, 'tonbo-sl-no')"></td>
-            <td><input type="text" name="sensor-sl-no" class="form-control small-input" oninput="handleInput(this, 'sensor-sl-no')"></td>
-            <td><input type="text" name="proxy-board-sl-no" class="form-control small-input" oninput="handleInput(this, 'proxy-board-sl-no')"></td>
-            <td><input type="text" name="power-board-sl-no" class="form-control small-input" oninput="handleInput(this, 'power-board-sl-no')"></td>
-        `;
-
-                // Automatically focus on the first input field in the new row
-                newRow.querySelector('input[name="tonbo-sl-no"]').focus();
-
-                // Update the total count
-                updateTotalSerialCount();
-            }
-        }
-
-        function handleInput(input, columnName) {
-            var currentRow = input.closest('tr'); // Get the current row
-            var table = document.getElementById("my-table");
-
-            // Add a new row if this is the last row and the input value is not empty
-            addNewRow(input);
-
-            // Move to the next row in the same column if the current input is not empty
-            if (input.value.trim() !== '') {
-                var nextRow = currentRow.nextElementSibling;
-                if (nextRow) {
-                    var nextInput = nextRow.querySelector(`input[name="${columnName}"]`);
-                    if (nextInput) {
-                        nextInput.focus();
-                    }
-                }
-            }
-        }
-
-        function updateTotalSerialCount() {
-            var table = document.getElementById("my-table");
-            var rowCount = 0;
-
-            // Count the number of filled Tonbo SL.no cells
-            for (var i = 1, row; row = table.rows[i]; i++) {
-                var tonboCell = row.cells[1].querySelector('input[name="tonbo-sl-no"]');
-                if (tonboCell && tonboCell.value.trim() !== '') {
-                    rowCount++;
-                }
-            }
-
-            // Update the total count display
-            document.getElementById('total-serial-count').textContent = rowCount;
-        }
-
-        // Update SL.no for the remaining rows after deletion
-        function updateSerialNumbers() {
-            var table = document.getElementById("my-table");
-            for (var i = 1; i < table.rows.length; i++) {
-                table.rows[i].cells[0].textContent = i;
-            }
-        }
-
-        // Add event listeners to all input fields for the initial row
-        document.querySelectorAll('input[name="tonbo-sl-no"], input[name="sensor-sl-no"], input[name="proxy-board-sl-no"], input[name="power-board-sl-no"]').forEach(function (input) {
-            input.addEventListener('input', function () {
-                handleInput(this, input.name);
-                updateTotalSerialCount(); // Update the total count when any input changes
-            });
-        });
-
-        // Update total count initially
-        updateTotalSerialCount();
-
-    </script>
 
 
 </body>
