@@ -286,11 +286,11 @@
                                     </span>
                                 </div>
                             </div>
-                        
+
                         </div>
                         <br><br><br><br>
                     </form>
-                 
+
                     <table class="table">
                         <thead>
                             <tr>
@@ -763,7 +763,6 @@
             </div>
 
             <script>
-                // JavaScript specific to data5 if needed
                 document.addEventListener('DOMContentLoaded', function () {
                     function saveData() {
                         alert('Data saved successfully!');
@@ -771,9 +770,7 @@
 
                     // Add event listener for save button in data5
                     document.querySelector('#data5 .save-btn').addEventListener('click', saveData);
-                })
-
-
+                });
 
             </script>
 
@@ -782,7 +779,6 @@
                 <h1 class="overall-textsize">Overall Assembled</h1>
 
                 <div class="container">
-                    <h4>Overall Assembled Detector Details</h4>
                     <div class="new-detectors">
                         <span>New detectors</span>
                         <button class="detector-btn">ATTO</button>
@@ -896,18 +892,18 @@
                         <label for="date">Date</label>
                         <input type="date" id="date" name="date" class="form-control">
                     </div>
-                        <div class="form-row centered" id="search-bar">
-                            <div class="form-group col-md-4">
-                                <label for="search-sl-no">Search SL.No</label>
-                                <div id="search-style" style="position: relative;">
-                                    <input type="text" id="search-sl-no" class="form-control" onkeyup="searchTable()">
-                                    <span style="position: absolute; right: 10px; top: 10px;">
-                                        <img src="/img/search.png" alt="Search" style="height: 20px; width: 20px;">
-                                    </span>
-                                </div>
+                    <div class="form-row centered" id="search-bar">
+                        <div class="form-group col-md-4">
+                            <label for="search-sl-no">Search SL.No</label>
+                            <div id="search-style" style="position: relative;">
+                                <input type="text" id="search-sl-no" class="form-control" onkeyup="searchTable()">
+                                <span style="position: absolute; right: 10px; top: 10px;">
+                                    <img src="/img/search.png" alt="Search" style="height: 20px; width: 20px;">
+                                </span>
                             </div>
                         </div>
-                        <br><br><br><br>
+                    </div>
+                    <br><br><br><br>
                     <table>
                         <thead>
                             <tr>
@@ -934,8 +930,8 @@
                                 <td>TUV-9001234</td>
                                 <td>
                                     <select class="status-dropdown" id="len">
-                                    <option value="passed" class="passed">PRODUCED</option>
-                                    <option value="failed" class="failed">NOT PRODUCED</option>
+                                        <option value="passed" class="passed">PRODUCED</option>
+                                        <option value="failed" class="failed">NOT PRODUCED</option>
                                     </select>
                                 </td>
 
@@ -1003,211 +999,89 @@
         <div id="data8" class="data">
             <h1 class="overall-textsize">Detector History</h1>
             <div class="search-box">
-                <span>Detector S.I. No:</span>
-                <input type="text" id="detector-serial" class="detector-serial" placeholder="Enter Serial Number">
-                <button class="search-btn" onclick="searchDetector()">Search</button>
+                <label for="serial-number">Detector S.I. No:</label>
+                <input type="text" id="serial-number" placeholder="Enter Serial Number">
+                <button id="search-button">Search</button>
             </div>
-
-            <div class="container">
-                <div class="timeline">
-                    <div class="stage completed">
-                        <div class="circle green">
-                            <div class="small-circle black"></div>
-                        </div>
-                        <div class="line-horizontal"></div>
-                        <span>Assembly</span>
-                    </div>
-                    <div class="stage completed">
-                        <div class="circle green">
-                            <div class="small-circle black"></div>
-                        </div>
-                        <div class="line-horizontal"></div>
-                        <span>Chamber Calibration</span>
-                    </div>
-                    <div class="stage in-progress">
-                        <div class="circle red">
-                            <div class="small-circle black"></div>
-                        </div>
-                        <div class="line-horizontal"></div>
-                        <span>Post Calibration</span>
-                    </div>
-                    <div class="stage">
-                        <div class="circle grey">
-                            <div class="small-circle black"></div>
-                        </div>
-                        <span>Testing</span>
-                    </div>
-                    <div class="stage">
-                        <div class="circle grey">
-                            <div class="small-circle black"></div>
-                        </div>
-                        <span>Sent to Store</span>
-                    </div>
+            <div class="progress-bar">
+                <div class="stage">
+                    <div class="circle green"></div>
+                    <span>Assembly</span>
                 </div>
-                <div class="details">
-                    <table>
-                        <tr>
-                            <th>Stage</th>
-                            <th>Date</th>
-                            <th>Details</th>
-                        </tr>
-                        <tr>
-                            <td>Assembly</td>
-                            <td>25/04/2024</td>
-                            <td><button class="view-link" onclick="viewDetails(0)">View</button></td>
-                        </tr>
-                        <tr>
-                            <td>Chamber Calibration</td>
-                            <td>26/04/2024</td>
-                            <td><button class="view-link" onclick="viewDetails(1)">View</button></td>
-                        </tr>
-                        <tr>
-                            <td>Post Calibration</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Testing</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Sent to Store</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </table>
+                <div class="stage">
+                    <div class="circle green"></div>
+                    <span>Chamber Calibration</span>
                 </div>
-                <button class="done-btn" onclick="finalizeHistory()">DONE</button>
+                <div class="stage">
+                    <div class="circle red"></div>
+                    <span>Post Calibration</span>
+                </div>
+                <div class="stage">
+                    <div class="circle gray"></div>
+                    <span>Testing</span>
+                </div>
+                <div class="stage">
+                    <div class="circle gray"></div>
+                    <span>Sent to Store</span>
+                </div>
             </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Stage</th>
+                        <th>Date</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Assembly</td>
+                        <td>25/04/2024</td>
+                        <td><button class="view-button">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>Chamber Calibration</td>
+                        <td>26/04/2024</td>
+                        <td><button class="view-button">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>Post Calibration</td>
+                        <td></td>
+                        <td><button class="view-button">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>Testing</td>
+                        <td></td>
+                        <td><button class="view-button">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>Sent to Store</td>
+                        <td></td>
+                        <td><button class="view-button">View</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="done-button">DONE</button>
         </div>
 
         <script>
-            // Sample data for demonstration
-            const detectorData = {
-                "123456": {
-                    stages: [
-                        { name: "Assembly", date: "25/04/2024" },
-                        { name: "Chamber Calibration", date: "26/04/2024" },
-                        { name: "Post Calibration", date: null },
-                        { name: "Testing", date: null },
-                        { name: "Sent to Store", date: null }
-                    ]
-                }
-                // Add more detector data as needed
-            };
-
-            function searchDetector() {
-                const serialNumber = document.getElementById('detector-serial').value.trim(); // Ensure to trim whitespace
-
-                // Debugging: Check the value of serialNumber
-                console.log("Searching for detector with serial number:", serialNumber);
-
-                const detector = detectorData[serialNumber]; // Assuming detectorData is globally accessible
-
-                if (detector) {
-                    updateTimeline(detector);
-                    updateDetails(detector);
-                } else {
-                    alert("Detector not found. Please enter a valid Serial Number.");
-                }
-            }
-
-            function updateTimeline(detector) {
-                const timelineStages = document.querySelectorAll('#data8 .stage');
-                timelineStages.forEach((stage, index) => {
-                    const stageData = detector.stages[index];
-                    const circle = stage.querySelector('.circle');
-                    const smallCircle = circle.querySelector('.small-circle');
-                    const line = stage.querySelector('.line-horizontal');
-                    const span = stage.querySelector('span');
-
-                    if (stageData) {
-                        circle.style.backgroundColor = getColorForStage(stageData.name);
-                        if (stageData.date) {
-                            smallCircle.style.display = 'block';
-                            line.style.backgroundColor = '#ccc';
-                        } else {
-                            smallCircle.style.display = 'none';
-                            line.style.backgroundColor = 'transparent';
-                        }
-                        span.textContent = stageData.name;
-                    } else {
-                        circle.style.backgroundColor = '#ddd'; // Default grey
-                        smallCircle.style.display = 'none';
-                        span.textContent = '';
-                        line.style.backgroundColor = 'transparent';
-                    }
-                });
-            }
-
-            function updateDetails(detector) {
-                const detailsTable = document.querySelector('#data8 .details table');
-                const rows = detailsTable.rows;
-                detector.stages.forEach((stage, index) => {
-                    if (rows[index + 1]) { // Skip the header row (index 0)
-                        const cells = rows[index + 1].cells;
-                        cells[1].textContent = stage.date || ''; // Update date column
-                        cells[2].innerHTML = stage.date ? '<button class="view-link" data-index="' + index + '">View</button>' : ''; // Update details column with view button
-                    }
+            document.addEventListener('DOMContentLoaded', function () {
+                document.getElementById('search-button').addEventListener('click', function () {
+                    const serialNumber = document.getElementById('serial-number').value;
+                    alert('Searching for serial number: ' + serialNumber);
                 });
 
-                // Reattach event listeners for view links after updating table
-                attachViewLinksEventListeners();
-            }
-
-            function viewDetails(index) {
-                const detailsTable = document.querySelector('#data8 .details table');
-                const rows = detailsTable.rows;
-                const stageName = rows[index + 1].cells[0].textContent; // Get stage name from table
-
-                // Simulate fetching details for demonstration
-                const details = {
-                    "Assembly": "Details for Assembly stage.",
-                    "Chamber Calibration": "Details for Chamber Calibration stage."
-                    // Add more details as needed
-                };
-
-                alert(details[stageName] || "Details not available.");
-            }
-
-            function getColorForStage(stageName) {
-                switch (stageName) {
-                    case "Assembly":
-                        return "#4CAF50"; // Green
-                    case "Chamber Calibration":
-                        return "#4CAF50"; // Green
-                    case "Post Calibration":
-                        return "#f44336"; // Red
-                    case "Testing":
-                    case "Sent to Store":
-                        return "#ddd"; // Grey
-                    default:
-                        return "#ddd"; // Default grey
-                }
-            }
-
-            function finalizeHistory() {
-                alert("History finalized!");
-                // Implement finalization logic as needed
-            }
-
-            // Function to attach event listeners to view links dynamically
-            function attachViewLinksEventListeners() {
-                document.querySelectorAll('.view-link').forEach(link => {
-                    link.addEventListener('click', function () {
-                        const index = parseInt(this.dataset.index); // Get index from data-index attribute
-                        viewDetails(index);
+                const viewButtons = document.querySelectorAll('.view-button');
+                viewButtons.forEach(button => {
+                    button.addEventListener('click', function () {
+                        alert('Viewing details for: ' + button.parentElement.parentElement.firstElementChild.textContent);
                     });
                 });
-            }
 
-            // Attach initial event listeners
-            document.querySelector('.search-btn').addEventListener('click', searchDetector);
-            document.querySelector('.done-btn').addEventListener('click', finalizeHistory);
-
-            // Attach view links event listeners initially
-            attachViewLinksEventListeners();
+                document.querySelector('.done-button').addEventListener('click', function () {
+                    alert('Done button clicked!');
+                });
+            });
 
         </script>
 
