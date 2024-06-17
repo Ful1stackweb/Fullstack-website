@@ -9,44 +9,40 @@ body {
 header {
     background-color: #5e77c4;
     color: #FFFFFF;
-    padding: 10px 20px; /* Increase padding for header */
+    padding: 10px 20px; /* Adjust padding for header */
     display: flex;
     align-items: center;
+    justify-content: space-between; /* Space between logo and title */
     font-size: 18px; /* Increase font size for header */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    height: auto; /* Auto height for header */
 }
 
 #loginBox {
     border-radius: 15px; /* Rounded corners for login box */
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    position: fixed;
+    top: 180px; /* Adjust vertical position to move it down */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    z-index: 999;
+    width: 100%; /* Adjust width for smaller screens */
+    max-width: 400px; /* Maximum width for the login box */
 }
 
+/* Adjust the padding inside the login box */
 .loginBoxBorder {
     background-color: #5e77c4;
     color: #c76c6c;
-    padding: 20px; /* Increase padding for login box */
-}
-
-.container-text {
-    font-size: 1.5rem; /* Larger font size for text */
-    text-align: center; /* Center text */
-    margin-bottom: 20px; /* Increase space between text and button */
-}
-
-.logo-button {
-    width: 60px; /* Increase width for logo button */
-    height: 60px; /* Increase height for logo button */
-    cursor: pointer;
-}
-
-.cardStudent {
-    border-radius: 20px; /* Rounded corners for cards */
-    margin-bottom: 20px; /* Increase margin between cards */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    padding: 15px; /* Reduce padding for login box header */
 }
 
 .card-body {
-    padding: 20px; /* Increase padding for card body */
+    padding: 15px; /* Reduce padding for card body */
     border-radius: 15px; /* Rounded corners for card body */
     border: 1px solid #ccc; /* Add border to card body */
 }
@@ -69,9 +65,9 @@ footer {
     background-color: #222; /* Darker background color for footer */
     color: #fff;
     text-align: center;
+    padding: 15px 0; /* Increase padding for footer */
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
     position: fixed;
     bottom: 0;
     width: 100%;
-    padding: 15px 0; /* Increase padding for footer */
-    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
 }

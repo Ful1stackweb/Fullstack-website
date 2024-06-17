@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assembly Login</title>
-    <link rel="stylesheet" href="assembly login.css">
+    <link rel="stylesheet" href="assembly-login.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+
 <body class="WhiteBackground">
-    <header class="d-flex justify-content-between align-items-center p-1 bg-primary text-white">
+    <header class="d-flex align-items-center justify-content-between p-1 bg-primary text-white">
         <a href="#"><img src="img/Tonbologo.png" class="img-responsive Tonbologo" alt="Logo" id="logo" style="width: 150px; height: 50px;"></a>
-        <h1 class="flex-grow-1 text-center m-0">TI Sensor Data & Tracking </h1>
-    </header>  
+        <h1 class="m-0">TI Sensor Data & Tracking</h1>
+        <div style="width: 150px;"></div> <!-- Placeholder to balance the layout -->
+    </header>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-11 col-sm-8 col-md-6 col-lg-6 col-xl-4 WhiteBackground shadow-lg mx-auto p-0 mt-5" id="loginBox">
+        <div class="row justify-content-center">
+            <div class="col-11 col-sm-8 col-md-6 col-lg-6 col-xl-4 WhiteBackground shadow-lg mx-auto p-0 mt-5 fixed-center" id="loginBox">
                 <div class="card border-0">
                     <div class="card-header loginBoxBorder">
                         <h4 class="fw-bold">Assembly Login</h4>
@@ -36,14 +39,21 @@
                             </div>
                             <button type="submit" class="btn btn-sm btn-primary float-end">Submit</button>
                         </form>
-                        <form id="assemblyLoginForm" name="assemblyLoginForm" class="form-signin" method="POST" action="assembly-dashboard.html">
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <footer class="bg-dark text-white text-center py-3 mt-4 fixed-bottom">
+        <p class="m-0">Tonbo Imaging &copy; 2024</p>
+    </footer>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-       <!-- function toggleEye() {
+        function toggleEye() {
             const passwordField = document.getElementById('password');
             const passwordIcon = document.getElementById('passwordIcon');
             if (passwordField.type === 'password') {
@@ -56,17 +66,7 @@
                 passwordIcon.classList.add('fa-eye');
             }
         }
-            -->
-        
-    </script> 
-
-    <!-- Include Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <footer class="bg-dark text-white text-center py-3 mt-4">
-        <p class="m-0">Tonbo Imaging &copy; 2024</p>
-    </footer>
-
+    </script>
 </body>
+
 </html>
